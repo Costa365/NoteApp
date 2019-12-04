@@ -57,7 +57,7 @@ export default class IndexItem extends Component {
       return (
         <div className="container">
           <div className="panel panel-default">
-            <div className="panel-heading">List of Tasks</div>
+            <div className="panel-heading">List of Notes</div>
             <div className="panel-body">
             <p>Click on the task description to edit</p>
               <table id="note-list" className="table table-bordered">
