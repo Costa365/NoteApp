@@ -7,6 +7,9 @@ import {Header} from "./components/Header";
 import AddNote from './components/AddNote';
 import ListNotes from './components/ListNotes';
 import UpdateNote from './components/UpdateNote';
+import WithAuth from './components/WithAuth';
+import Login from './components/Login';
+import Register from './components/Register';
 
 import './index.css';
 
@@ -20,9 +23,12 @@ ReactDOM.render(
     <div>
       <Router>
       <div>
-      <Route path='/add' component={AddNote} />
-      <Route exact path='/' component={ListNotes} />
-      <Route path='/update/:id' component={UpdateNote} />
+      <Route path='/login' component={Login} />
+      <Route path='/register' component={Register} />
+
+      <Route path='/add' component={WithAuth(AddNote)} />
+      <Route exact path='/' component={WithAuth(ListNotes)} />
+      <Route path='/update/:id' component={WithAuth(UpdateNote)} />
       </div>
       </Router>
     </div>

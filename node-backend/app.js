@@ -25,7 +25,15 @@ var notesRoutes = require('./src/routes/notesRoutes');
 // App Instance
 var app = express();
 app.use(express.static('public'));
-app.use(cors());
+
+app.use(cors({
+  origin: function(origin, callback){
+    return callback(null, true);
+  },
+  optionsSuccessStatus: 200,
+  credentials: true
+}));
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(basePath, notesRoutes);
