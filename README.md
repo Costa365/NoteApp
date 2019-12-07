@@ -11,11 +11,15 @@ npm install mongoose --save
 npm install body-parser --save
 npm install cors --save
 npm install bcryptjs --save
+npm install jsonwebtoken --save
+npm install cookie-parser --save
 
 ## Frontend
 
 npm install react-router-dom --save
 npm install axios --save
+
+## Postman
 
 GET http://localhost:6200/notes
 GET http://localhost:6200/user/users

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import NoteService from './NoteService';
 
 export default class UpdateNote extends Component {

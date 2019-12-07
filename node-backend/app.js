@@ -1,12 +1,13 @@
 //Libraries
-var express = require('express');
-var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
-var cors = require('cors');
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
 
 //server configuration
-var basePath = '/notes';
-var port = 6200;
+const basePath = '/notes';
+const port = 6200;
 
 // Connection to DB
 mongoose.connect('mongodb://mongodb')
@@ -28,6 +29,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(basePath, notesRoutes);
+app.use(cookieParser());
 
 app.use('/user', require('./src/routes/userRoutes'));
 

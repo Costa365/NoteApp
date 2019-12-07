@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import NoteService from './NoteService';
-import axios from 'axios';
 import ListNotesRow from './ListNotesRow';
 
 export default class IndexItem extends Component {
