@@ -27,28 +27,6 @@ export default class Register extends Component {
         alert('Unable to register!');
       }
     });
-    
-    /*
-    fetch('/api/authenticate', {
-      method: 'POST',
-      body: JSON.stringify(this.state),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(res => {
-      if (res.status === 200) {
-        this.props.history.push('/');
-      } else {
-        const error = new Error(res.error);
-        throw error;
-      }
-    })
-    .catch(err => {
-      console.error(err);
-      alert('Error logging in please try again');
-    });
-    */
   }
 
   render() {

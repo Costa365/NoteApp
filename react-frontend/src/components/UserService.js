@@ -27,6 +27,20 @@ export default class UserService {
     });
   }
 
+  logout(callback) {
+    axios.post('http://localhost:6200/user/logout/', {
+      action: 'logout'
+    }, {withCredentials: true})
+    .then(function (response) {
+      console.log(response);
+      callback(true);
+    })
+    .catch(function (error) {
+      console.log(error);
+      callback(false);
+    });
+  }
+
   register(em, pw,callback) {
     axios.post('http://localhost:6200/user/register/', {
     email: em, password: pw

@@ -4,24 +4,20 @@ import NoteService from './NoteService';
 export default class UpdateNote extends Component {
 
   constructor(props) {
-      super(props);
-      this.noteService = new NoteService();
+    super(props);
+    this.noteService = new NoteService();
 
-      //bind the instance to each method
-      // (So you can use the THIS statement. Otherwise, it will be null)
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-      this.handleCancel = this.handleCancel.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
 
-      //set the initial state
-      this.state = {
-        _id: '',
-        desc: ''
-      };
+    this.state = {
+      _id: '',
+      desc: ''
+    };
   }
 
   componentDidMount(){
-    //the parameter ID
     let id =this.props.match.params.id;
     var thisRef = this;
     this.noteService.get(id, function(data){
@@ -30,8 +26,6 @@ export default class UpdateNote extends Component {
   }
 
   handleChange(event) {
-    //updates the state only for this parameter
-    //(_id stays the same)
     this.setState({desc: event.target.value});
   }
 
