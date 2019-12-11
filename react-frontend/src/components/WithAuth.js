@@ -13,6 +13,7 @@ export default function WithAuth(ComponentToProtect) {
       };
       this.userService = new UserService();
     }
+    
     componentDidMount() {
       this.userService.isAuth(res => {
         if (res === null) {
@@ -22,13 +23,14 @@ export default function WithAuth(ComponentToProtect) {
         }
       });
     }
+
     render() {
       const { loading, redirect } = this.state;
       if (loading) {
         return null;
       }
       if (redirect) {
-        return <Redirect to="/login" />;
+        return <Redirect to="/" />;
       }
       return <ComponentToProtect {...this.props} />;
     }

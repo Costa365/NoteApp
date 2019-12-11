@@ -23,39 +23,17 @@ export default class Login extends Component {
     
     this.userService.login(this.state.email, this.state.password, res=>{
       if (res === true) {
-        alert('Logged in successfully!');
+        window.location.reload();
       } else {
         alert('Unable to log in!');
       }
     });
-    
-    /*
-    fetch('http://localhost:6200/user/login/', {
-      method: 'POST',
-      body: JSON.stringify(this.state),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(res => {
-      if (res.status === 200) {
-        this.props.history.push('/');
-        console.log('ALL GOOOOOOD!!!!');
-      } else {
-        const error = new Error(res.error);
-        throw error;
-      }
-    })
-    .catch(err => {
-      console.error(err);
-      alert('Error logging in please try again');
-    });*/
   }
 
   render() {
     return (
       <form onSubmit={this.onSubmit}>
-        <h1>Login Below!</h1>
+        Login:
         <input
           type="email"
           name="email"

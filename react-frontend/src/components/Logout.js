@@ -12,7 +12,7 @@ export default class Logout extends Component {
   handleClick() {
     this.userService.logout(res=>{
       if (res === true) {
-        alert('Logged out successfully!');
+        window.location.reload();
       } else {
         alert('Unable to log out!');
       }

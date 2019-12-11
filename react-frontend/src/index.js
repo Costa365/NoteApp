@@ -8,9 +8,6 @@ import AddNote from './components/AddNote';
 import ListNotes from './components/ListNotes';
 import UpdateNote from './components/UpdateNote';
 import WithAuth from './components/WithAuth';
-import Login from './components/Login';
-import Logout from './components/Logout';
-import Register from './components/Register';
 
 import './index.css';
 
@@ -24,12 +21,9 @@ ReactDOM.render(
     <div>
       <Router>
       <div>
-      <Route path='/login' component={Login} />
-      <Route path='/logout' component={WithAuth(Logout)} />
-      <Route path='/register' component={Register} />
 
-      <Route path='/add' component={WithAuth(AddNote)} />
       <Route exact path='/' component={WithAuth(ListNotes)} />
+      <Route path='/add' component={WithAuth(AddNote)} />
       <Route path='/update/:id' component={WithAuth(UpdateNote)} />
       </div>
       </Router>

@@ -32,7 +32,7 @@ export default class Register extends Component {
   render() {
     return (
       <form onSubmit={this.onSubmit}>
-        <h1>Register Below!</h1>
+        Register:
         <input
           type="email"
           name="email"
