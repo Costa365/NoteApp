@@ -10,7 +10,7 @@ const basePath = '/notes';
 const port = 6200;
 
 // Connection to DB
-mongoose.connect('mongodb://mongodb')
+mongoose.connect('mongodb://mongodb', { useUnifiedTopology: true })
   .then(() => {
     console.log('Backend Started');
   })
