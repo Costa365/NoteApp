@@ -15,7 +15,7 @@ export const Header = (props) => {
             <span className="sr-only">Toggle navigation</span>
             <span className="icon-bar"></span>
           </button>
-          <a className="navbar-brand" href="#">ReactJS Notes</a>
+          <a className="navbar-brand" href="/#">ReactJS Notes</a>
         </div>
       </div>
 
