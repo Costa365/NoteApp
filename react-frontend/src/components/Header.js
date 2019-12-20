@@ -1,12 +1,17 @@
 import React from "react";
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import Login from './Login';
 import Logout from './Logout';
 import Register from './Register';
+import WithAuth from './WithAuth';
 
 export const Header = (props) => {
-  const form = <span><Login /><Register /><Logout /></span>;
 
+  const LoginComp = WithAuth(Login,false);
+  const RegisterComp = WithAuth(Register,false);
+  const LogoutComp = WithAuth(Logout);
+  
   return (
     <nav className="navbar navbar-default">
       <div className="container-fluid">
@@ -19,7 +24,13 @@ export const Header = (props) => {
         </div>
       </div>
 
-      {form}
+      <Router>
+      <span>
+        <LoginComp />
+        <RegisterComp />
+        <LogoutComp />
+      </span>
+      </Router>
         
       </nav>
   );

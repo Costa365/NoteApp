@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import UserService from './UserService';
 
-export default function WithAuth(ComponentToProtect) {
+export default function WithAuth(ComponentToProtect, isAuth=true) {
   return class extends Component {
     constructor() {
       super();
@@ -12,13 +12,15 @@ export default function WithAuth(ComponentToProtect) {
         redirect: false,
       };
       this.userService = new UserService();
+      this.isAuth = isAuth;
     }
     
     componentDidMount() {
       this.userService.isAuth(res => {
         if (res === null) {
           this.setState({ loading: false, redirect: true});
-        } else {
+        } 
+        else {
           this.setState({ loading: false, redirect: false});
         }
       });
@@ -29,10 +31,27 @@ export default function WithAuth(ComponentToProtect) {
       if (loading) {
         return null;
       }
-      if (redirect) {
+      
+      if (redirect && this.isAuth) {
         return <Redirect to="/" />;
       }
-      return <ComponentToProtect {...this.props} />;
+      else {
+        return <ComponentToProtect {...this.props} />;
+      }
+      
+      /*
+      if(this.isAuth){
+        if (redirect) {
+          return <Redirect to="/" />;
+        }
+        return <ComponentToProtect {...this.props} />;
+      }
+      else{
+        if (redirect) {
+          return <ComponentToProtect {...this.props} />;
+        }
+        return <Redirect to="/" />;
+      }*/
     }
   }
 }
