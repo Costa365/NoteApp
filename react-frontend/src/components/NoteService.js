@@ -29,7 +29,6 @@ export default class NoteService {
     desc: data
     }, {withCredentials:true})
     .then(function (response) {
-      console.log(response);
       callback();
     })
     .catch(function (error) {
@@ -43,7 +42,6 @@ export default class NoteService {
       desc: data
     }, {withCredentials:true})
     .then(function(response) {
-      console.log('Updated');
       callback();
     })
     .catch(function(response) {
