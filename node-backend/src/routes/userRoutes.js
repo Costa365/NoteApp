@@ -6,6 +6,7 @@ const secret = 'mysecretsshhh';
 const withAuth = require('./middleware');
 const User = require('../models/User');
 
+
 router.route('/secret').get(withAuth, function (req, res) {
   res.send('The password is potato');
 });
@@ -15,7 +16,7 @@ router.route('/checkToken').get(withAuth, function (req, res) {
 });
 
 // Get All Items
-router.route('/users').get(function (req, res) {
+router.route('/users').get(withAuth, function (req, res) {
   User.find(function (err, items){
     if(err){
       console.log(err);
@@ -80,7 +81,7 @@ router.route('/login').post(function (req, res) {
   });
 });
 
-router.route('/logout').post(function (req, res) {
+router.route('/logout').post(withAuth, function (req, res) {
   res.clearCookie('token')
   return res.status(200).send(); 
 });

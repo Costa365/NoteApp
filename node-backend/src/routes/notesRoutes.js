@@ -1,12 +1,13 @@
 var express = require('express');
 var app = express();
 var router = express.Router();
+var withAuth = require('./middleware');
 
 //Schema
 var Notes = require('../models/Notes');
 
 // Get Specific
-router.route('/:id').get(function (req, res) {
+router.route('/:id').get(withAuth, function (req, res) {
   var id = req.params.id;
   Notes.findById(id, function (err, item){
       res.json(item);
@@ -14,7 +15,7 @@ router.route('/:id').get(function (req, res) {
 });
 
 // Get All Items
-router.route('/').get(function (req, res) {
+router.route('/').get(withAuth, function (req, res) {
   Notes.find(function (err, items){
     if(err){
       console.log(err);
@@ -25,7 +26,7 @@ router.route('/').get(function (req, res) {
 });
 
 // Add item
-router.route('/add').post(function (req, res) {
+router.route('/add').post(withAuth, function (req, res) {
   var item = new Notes(req.body);
   item.save()
     .then(item => {
@@ -37,7 +38,7 @@ router.route('/add').post(function (req, res) {
 });
 
 //  Update Specific
-router.route('/update/:id').post(function (req, res) {
+router.route('/update/:id').post(withAuth, function (req, res) {
   Notes.findById(req.params.id, function(err, item) {
     if (!item)
       return next(new Error('Could not load Document'));
@@ -54,7 +55,7 @@ router.route('/update/:id').post(function (req, res) {
 });
 
 // Delete Specific
-router.route('/delete/:id').get(function (req, res) {
+router.route('/delete/:id').get(withAuth, function (req, res) {
   Notes.findByIdAndRemove({_id: req.params.id},
       function(err, item){
       if(err) res.json(err);

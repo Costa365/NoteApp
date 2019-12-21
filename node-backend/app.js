@@ -36,9 +36,9 @@ app.use(cors({
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use(basePath, notesRoutes);
 app.use(cookieParser());
 
+app.use(basePath, notesRoutes);
 app.use('/user', require('./src/routes/userRoutes'));
 
 // Execute App
