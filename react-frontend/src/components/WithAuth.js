@@ -31,27 +31,13 @@ export default function WithAuth(ComponentToProtect, isAuth=true) {
       if (loading) {
         return null;
       }
-      
-      if (redirect && this.isAuth) {
+
+      if (redirect === this.isAuth)  {
         return <Redirect to="/" />;
       }
       else {
         return <ComponentToProtect {...this.props} />;
-      }
-      
-      /*
-      if(this.isAuth){
-        if (redirect) {
-          return <Redirect to="/" />;
-        }
-        return <ComponentToProtect {...this.props} />;
-      }
-      else{
-        if (redirect) {
-          return <ComponentToProtect {...this.props} />;
-        }
-        return <Redirect to="/" />;
-      }*/
+      }      
     }
   }
 }
