@@ -32,12 +32,16 @@ export default function WithAuth(ComponentToProtect, isAuth=true) {
         return null;
       }
 
-      if (redirect === this.isAuth)  {
-        return <Redirect to="/" />;
+      let ret;
+
+      if(this.isAuth){
+        ret = redirect ? <Redirect to="/" /> : <ComponentToProtect {...this.props} />;
       }
-      else {
-        return <ComponentToProtect {...this.props} />;
-      }      
+      else{
+        ret = redirect ? (<ComponentToProtect {...this.props} />) : <span />;
+      }
+      
+      return ret;
     }
   }
 }
