@@ -16,7 +16,8 @@ router.route('/:id').get(withAuth, function (req, res) {
 
 // Get All Items
 router.route('/').get(withAuth, function (req, res) {
-  Notes.find(function (err, items){
+  var query = { user: req.email };
+  Notes.find(query,function (err, items){
     if(err){
       console.log(err);
     } else {
@@ -28,6 +29,7 @@ router.route('/').get(withAuth, function (req, res) {
 // Add item
 router.route('/add').post(withAuth, function (req, res) {
   var item = new Notes(req.body);
+  item["user"] = req.email;
   item.save()
     .then(item => {
       res.json('Added');
@@ -44,6 +46,7 @@ router.route('/update/:id').post(withAuth, function (req, res) {
       return next(new Error('Could not load Document'));
     else {
       item.desc = req.body.desc;
+      item.user = req.email;
       item.save().then(item => {
         res.json('Updated');
       })

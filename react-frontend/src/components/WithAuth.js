@@ -9,7 +9,7 @@ export default function WithAuth(ComponentToProtect, isAuth=true) {
       super();
       this.state = {
         loading: true,
-        redirect: false,
+        redirect: false
       };
       this.userService = new UserService();
       this.isAuth = isAuth;

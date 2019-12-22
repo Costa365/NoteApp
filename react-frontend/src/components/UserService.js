@@ -18,7 +18,6 @@ export default class UserService {
     email: em, password: pw
     }, {withCredentials: true})
     .then(function (response) {
-      console.log(response);
       callback(true);
     })
     .catch(function (error) {

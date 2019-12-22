@@ -3,10 +3,8 @@ var Schema = mongoose.Schema;
 
 //schema
 var Notes = new Schema({
-  desc: {
-    type: String
-  },
-
+  desc: { type: String },
+  user: { type: String, required: true }
 },{
     collection: 'Notes'
 });
