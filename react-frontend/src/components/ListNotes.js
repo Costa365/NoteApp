@@ -14,7 +14,7 @@ export default class IndexItem extends Component {
       this.onUpdate = this.onUpdate.bind(this);
       this.handleAdd = this.handleAdd.bind(this);
     }
-    
+
     componentDidMount(){
       this.fillData();
     }
@@ -37,11 +37,13 @@ export default class IndexItem extends Component {
     }
 
     onDelete(event) {
-      let id = event.target.id;
-      var thisRef = this;
-      this.noteService.delete(id,()=>{
-        thisRef.fillData();
-      });
+      if (window.confirm('Are you sure?')){
+        let id = event.target.id;
+        var thisRef = this;
+        this.noteService.delete(id,()=>{
+          thisRef.fillData();
+        });
+      }
     }
 
     onUpdate(event) {
@@ -57,9 +59,8 @@ export default class IndexItem extends Component {
       return (
         <div className="container">
           <div className="panel panel-default">
-            <div className="panel-heading">List of Notes</div>
+            <div className="panel-heading">Notes</div>
             <div className="panel-body">
-            <p>Click on the task description to edit</p>
               <table id="note-list" className="table table-bordered">
                 <tbody>
                   {this.tabRow()}

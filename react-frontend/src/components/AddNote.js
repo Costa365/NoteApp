@@ -38,8 +38,8 @@ export default class AddNote extends Component {
             <div className="panel panel-default">
               <div className="panel-heading">Add Task</div>
               <div className="panel-body">
-              <p>Task description</p>
-                <input type="text" value={this.state.value} onChange={this.handleChange} className="form-control"/>
+              <p>Note</p>
+                <textarea name="text" cols="40" rows="5" type="text" value={this.state.value} onChange={this.handleChange} className="form-control"></textarea>
               </div>
               <div className="panel-footer">
               <button type="submit" className="btn btn-primary">Add</button>

@@ -53,11 +53,11 @@ export default class UpdateNote extends Component {
       <div className="container">
         <form onSubmit={this.handleSubmit}>
           <div className="panel panel-default">
-            <div className="panel-heading">Edit Task</div>
+            <div className="panel-heading">Edit Note</div>
             <div className="panel-body">
             <p>Task description</p>
               <input type="hidden" value={this.state._id} />
-                  <input type="text" value={this.state.desc} onChange={this.handleChange}  className="form-control"/>
+                  <textarea cols="40" rows="6" type="text" value={this.state.desc} onChange={this.handleChange} className="form-control"></textarea>
             </div>
             <div className="panel-footer">
             <button type="submit" className="btn btn-primary">Update</button>
