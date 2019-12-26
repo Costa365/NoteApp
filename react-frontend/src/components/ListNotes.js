@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import NoteService from './NoteService';
 import ListNotesRow from './ListNotesRow';
 
-export default class IndexItem extends Component {
+export default class ListNotes extends Component {
 
   constructor(props) {
       super(props);
       this.state = {items: ''};
       this.noteService = new NoteService();
 
-      //bind
       this.onDelete = this.onDelete.bind(this);
       this.onUpdate = this.onUpdate.bind(this);
       this.handleAdd = this.handleAdd.bind(this);
@@ -28,7 +27,6 @@ export default class IndexItem extends Component {
 
     tabRow(){
       if(this.state.items instanceof Array){
-
         var thisRef = this;
         return this.state.items.map(function(object, i){
             return <ListNotesRow onDelete={thisRef.onDelete} onUpdate={thisRef.onUpdate} obj={object} key={i} />;
@@ -57,19 +55,17 @@ export default class IndexItem extends Component {
 
     render() {
       return (
-        <div className="container">
-          <div className="panel panel-default">
-            <div className="panel-heading">Notes</div>
-            <div className="panel-body">
-              <table id="note-list" className="table table-bordered">
-                <tbody>
-                  {this.tabRow()}
-                </tbody>
-              </table>
-            </div>
-            <div className="panel-footer">
-              <button onClick={this.handleAdd} className="btn btn-info">New note</button>
-            </div>
+        <div className="panel panel-default">
+          <div className="panel-heading">Notes</div>
+          <div className="panel-body">
+            <table id="note-list" className="table table-bordered">
+              <tbody>
+                {this.tabRow()}
+              </tbody>
+            </table>
+          </div>
+          <div className="panel-footer">
+            <button onClick={this.handleAdd} className="btn btn-info">New note</button>
           </div>
         </div>
       );

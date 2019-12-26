@@ -31,9 +31,9 @@ export default class Register extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        Register:
+      <form className="form-inline" onSubmit={this.onSubmit}>
         <input
+          className="form-control"
           type="email"
           name="email"
           placeholder="Enter email"
@@ -42,6 +42,7 @@ export default class Register extends Component {
           required
         />
         <input
+          className="form-control"
           type="password"
           name="password"
           placeholder="Enter password"
@@ -49,7 +50,7 @@ export default class Register extends Component {
           onChange={this.handleInputChange}
           required
         />
-       <input type="submit" value="Submit"/>
+       <input className="btn btn-primary mb-2" type="submit" value="Register"/>
       </form>
     );
   }

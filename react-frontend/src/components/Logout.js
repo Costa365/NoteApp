@@ -21,7 +21,7 @@ export default class Logout extends Component {
 
   render() {
     return (
-      <button onClick={this.handleClick}>Logout</button>
+      <button className="btn btn-primary mb-2" onClick={this.handleClick}>Logout</button>
     );
   }
 }

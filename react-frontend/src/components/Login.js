@@ -33,17 +33,19 @@ export default class Login extends Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        Login:
+      <form className="form-inline" onSubmit={this.onSubmit}>
         <input
+          className="form-control"
           type="email"
           name="email"
+          id="inputEmailLogin"
           placeholder="Enter email"
           value={this.state.email}
           onChange={this.handleInputChange}
           required
         />
         <input
+          className="form-control"
           type="password"
           name="password"
           placeholder="Enter password"
@@ -51,7 +53,7 @@ export default class Login extends Component {
           onChange={this.handleInputChange}
           required
         />
-       <input type="submit" value="Submit"/>
+       <input className="btn btn-primary mb-2" type="submit" value="Login"/>
       </form>
     );
   }

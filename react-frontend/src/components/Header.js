@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import Login from './Login';
@@ -6,32 +6,30 @@ import Logout from './Logout';
 import Register from './Register';
 import WithAuth from './WithAuth';
 
-export const Header = (props) => {
+export default class Header extends Component {
 
-  const LoginComp = WithAuth(Login,false);
-  const RegisterComp = WithAuth(Register,false);
-  const LogoutComp = WithAuth(Logout);
-  
-  return (
-    <nav className="navbar navbar-default">
-      <div className="container-fluid">
-        <div className="navbar-header">
-          <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span className="sr-only">Toggle navigation</span>
-            <span className="icon-bar"></span>
-          </button>
-          <a className="navbar-brand" href="/#">ReactJS Notes</a>
+  constructor(props) {
+    super(props);
+
+    this.LoginComp = WithAuth(Login,false);
+    this.RegisterComp = WithAuth(Register,false);
+    this.LogoutComp = WithAuth(Logout);
+  }
+
+  render() {
+    return (
+      <nav className="navbar navbar-default">
+        <div className="container">
+        <a className="navbar-brand" href="/#">Notes</a>
+        <Router>
+          <span>
+            <this.LoginComp />
+            <this.RegisterComp />
+            <this.LogoutComp />
+          </span>
+        </Router>
         </div>
-      </div>
-
-      <Router>
-      <span>
-        <LoginComp />
-        <RegisterComp />
-        <LogoutComp />
-      </span>
-      </Router>
-        
       </nav>
-  );
+    );
+  }
 }
