@@ -29,6 +29,13 @@ POST http://localhost:6200/notes/add
   Body (x-www):
     desc : this is a note
 
+### Monngdb
+docker exec -it <container-id> /bin/bash
+mongo
+use test
+db.Notes.find();
+db.Notes.remove({});
+
 ### References
 
 Created using [MERN Tutorial](https://medium.com/codebase/series-mern-from-scratch-to-a-robust-solution-1af15204e281)
