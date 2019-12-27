@@ -1,4 +1,5 @@
 import axios from 'axios';
+import UserState from './UserState';
 
 export default class UserService {
 
@@ -8,6 +9,10 @@ export default class UserService {
       callback(response.data);
     })
     .catch(function (error) {
+      let userState = new UserState();
+      if(userState.isLoggedIn()){
+        userState.sessionEnded();
+      }
       console.log(error);
       callback(null);
     });
@@ -19,6 +24,8 @@ export default class UserService {
     }, {withCredentials: true})
     .then(function (response) {
       callback(true);
+      let userState = new UserState();
+      userState.loggedIn(em);
     })
     .catch(function (error) {
       console.log(error);
@@ -27,11 +34,12 @@ export default class UserService {
   }
 
   logout(callback) {
+    let userState = new UserState();
+    userState.loggedOut();
     axios.post('http://localhost:6200/user/logout/', {
       action: 'logout'
     }, {withCredentials: true})
     .then(function (response) {
-      console.log(response);
       callback(true);
     })
     .catch(function (error) {
@@ -45,7 +53,6 @@ export default class UserService {
     email: em, password: pw
     })
     .then(function (response) {
-      console.log(response);
       callback(true);
     })
     .catch(function (error) {

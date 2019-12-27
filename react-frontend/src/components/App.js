@@ -13,11 +13,11 @@ export default class App extends Component {
         <Header/>
 
         <Router>
-        <div>
-        <Route exact path='/' component={WithAuth(ListNotes)} />
-        <Route path='/add' component={WithAuth(AddNote)} />
-        <Route path='/update/:id' component={WithAuth(UpdateNote)} />
-        </div>
+          <div>
+            <Route exact path='/' component={WithAuth(ListNotes)} />
+            <Route path='/add' component={WithAuth(AddNote)} />
+            <Route path='/update/:id' component={WithAuth(UpdateNote)} />
+          </div>
         </Router>
       </div>
     );
