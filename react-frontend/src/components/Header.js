@@ -11,6 +11,8 @@ export default class Header extends Component {
   constructor(props) {
     super(props);
 
+
+
     this.LoginComp = WithAuth(Login,false);
     this.RegisterComp = WithAuth(Register,false);
     this.LogoutComp = WithAuth(Logout);
@@ -21,6 +23,7 @@ export default class Header extends Component {
       <nav className="navbar navbar-default">
         <div className="container">
         <a className="navbar-brand" href="/#">Notes</a>
+        {this.props.user}
         <Router>
           <span>
             <this.LoginComp />

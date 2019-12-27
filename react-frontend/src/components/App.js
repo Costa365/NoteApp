@@ -5,12 +5,19 @@ import AddNote from './AddNote';
 import ListNotes from './ListNotes';
 import UpdateNote from './UpdateNote';
 import WithAuth from './WithAuth';
+import UserState from './UserState';
 
 export default class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.userState = new UserState();
+  }
+
   render() {
     return (
       <div className="container">
-        <Header/>
+        <Header user={this.userState.userName()}/>
 
         <Router>
           <div>

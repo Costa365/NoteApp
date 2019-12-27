@@ -16,6 +16,7 @@ export default class UserService {
     .catch(function (error) {
       if(thisRef.userState.isLoggedIn()){
         thisRef.userState.sessionEnded();
+        window.location.reload();
       }
       console.log(error);
       callback(null);
