@@ -22,7 +22,7 @@ export default class Register extends Component {
     event.preventDefault();
     this.userService.register(this.state.email, this.state.password, res=>{
       if (res === true) {
-        alert('Register successfully!');
+        alert('Registered successfully!');
       } else {
         alert('Unable to register!');
       }
