@@ -3,15 +3,19 @@ import UserState from './UserState';
 
 export default class UserService {
 
+  constructor(props) {
+    this.userState = new UserState();
+  }
+
   isAuth(callback) {
+    let thisRef = this;
     axios.get('http://localhost:6200/user/checkToken', {withCredentials:true})
     .then((response) => {
       callback(response.data);
     })
     .catch(function (error) {
-      let userState = new UserState();
-      if(userState.isLoggedIn()){
-        userState.sessionEnded();
+      if(thisRef.userState.isLoggedIn()){
+        thisRef.userState.sessionEnded();
       }
       console.log(error);
       callback(null);
@@ -19,13 +23,13 @@ export default class UserService {
   }
 
   login(em, pw, callback) {
+    let thisRef = this;
     axios.post('http://localhost:6200/user/login/', {
     email: em, password: pw
     }, {withCredentials: true})
     .then(function (response) {
       callback(true);
-      let userState = new UserState();
-      userState.loggedIn(em);
+      thisRef.userState.loggedIn(em);
     })
     .catch(function (error) {
       console.log(error);
@@ -34,8 +38,7 @@ export default class UserService {
   }
 
   logout(callback) {
-    let userState = new UserState();
-    userState.loggedOut();
+    this.userState.loggedOut();
     axios.post('http://localhost:6200/user/logout/', {
       action: 'logout'
     }, {withCredentials: true})

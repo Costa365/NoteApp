@@ -1,26 +1,28 @@
+const userCookie = 'user';
+
 export default class UserState {
 
   isLoggedIn() {
-    if(this.getCookie('user') === undefined){
+    if(this.getCookie(userCookie) === undefined){
       return false;
     }
-    return !(this.getCookie('user') === null);
+    return !(this.getCookie(userCookie) === null);
   }
 
   userName(){
-    return this.getCookie('user');
+    return this.getCookie(userCookie);
   }
 
   sessionEnded(){
-    this.expireCookie('user');
+    this.expireCookie(userCookie);
   }
 
   loggedOut(){
-    this.expireCookie('user');
+    this.expireCookie(userCookie);
   }
 
   loggedIn(value){
-    document.cookie = "user=" + value;
+    document.cookie = userCookie + "=" + value;
   }
 
   getCookie(name) {
