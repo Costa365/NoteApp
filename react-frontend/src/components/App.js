@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Header from "./Header";
 import AddNote from './AddNote';
 import ListNotes from './ListNotes';
 import UpdateNote from './UpdateNote';
 import WithAuth from './WithAuth';
 import UserState from './UserState';
+import NoMatch from './NoMatch';
 
 export default class App extends Component {
 
@@ -21,9 +22,12 @@ export default class App extends Component {
 
         <Router>
           <div>
-            <Route exact path='/' component={WithAuth(ListNotes)} />
-            <Route path='/add' component={WithAuth(AddNote)} />
-            <Route path='/update/:id' component={WithAuth(UpdateNote)} />
+            <Switch>
+              <Route exact path='/' component={WithAuth(ListNotes)} />
+              <Route path='/add' component={WithAuth(AddNote)} />
+              <Route path='/update/:id' component={WithAuth(UpdateNote)} />
+              <Route component={NoMatch} />
+            </Switch>
           </div>
         </Router>
       </div>
