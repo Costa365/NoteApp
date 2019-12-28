@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Header from "./Header";
+import Footer from "./Footer";
 import AddNote from './AddNote';
 import ListNotes from './ListNotes';
 import UpdateNote from './UpdateNote';
@@ -30,6 +31,8 @@ export default class App extends Component {
             </Switch>
           </div>
         </Router>
+
+        <Footer />
       </div>
     );
   }
