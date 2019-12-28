@@ -8,7 +8,6 @@ export default class NoteService {
       callback(response.data);
     })
     .catch(function (error) {
-      console.log(error);
       callback(null);
     });
   }
@@ -19,7 +18,6 @@ export default class NoteService {
       callback(response.data);
     })
     .catch(function (error) {
-      console.log(error);
       callback(null);
     });
   }
@@ -32,7 +30,6 @@ export default class NoteService {
       callback();
     })
     .catch(function (error) {
-      console.log(error);
       callback();
     });
   }
@@ -55,7 +52,6 @@ export default class NoteService {
       callback();
     })
     .catch(function(response){
-      console.log('Error deleting');
       callback();
     });
   }

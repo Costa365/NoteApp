@@ -10,9 +10,6 @@ export default class Header extends Component {
 
   constructor(props) {
     super(props);
-
-
-
     this.LoginComp = WithAuth(Login,false);
     this.RegisterComp = WithAuth(Register,false);
     this.LogoutComp = WithAuth(Logout);

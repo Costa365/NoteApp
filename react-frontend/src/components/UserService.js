@@ -18,7 +18,6 @@ export default class UserService {
         thisRef.userState.sessionEnded();
         window.location.reload();
       }
-      console.log(error);
       callback(null);
     });
   }
@@ -33,7 +32,6 @@ export default class UserService {
       thisRef.userState.loggedIn(em);
     })
     .catch(function (error) {
-      console.log(error);
       callback(false);
     });
   }
@@ -47,7 +45,6 @@ export default class UserService {
       callback(true);
     })
     .catch(function (error) {
-      console.log(error);
       callback(false);
     });
   }
@@ -60,9 +57,7 @@ export default class UserService {
       callback(true);
     })
     .catch(function (error) {
-      console.log(error);
       callback(false);
     });
   }
-  
 }
