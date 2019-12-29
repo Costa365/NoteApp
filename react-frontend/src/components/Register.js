@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Swal from 'sweetalert2';
 import UserService from './UserService';
 
 export default class Register extends Component {
@@ -22,9 +23,17 @@ export default class Register extends Component {
     event.preventDefault();
     this.userService.register(this.state.email, this.state.password, res=>{
       if (res === true) {
-        alert('Registered successfully!');
+        Swal.fire({
+          icon: 'success',
+          title: 'Registered successfully',
+          text: 'You may now log in'
+        });
       } else {
-        alert('Unable to register!');
+        Swal.fire({
+          icon: 'error',
+          title: 'Unable to register',
+          text: 'Email may already be registered'
+        });
       }
     });
   }

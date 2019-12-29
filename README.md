@@ -11,6 +11,7 @@ npm install cors --save
 npm install bcryptjs --save
 npm install jsonwebtoken --save
 npm install cookie-parser --save
+npm install sweetalert2 --save
 
 ### Frontend
 

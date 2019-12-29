@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Swal from 'sweetalert2';
 import NoteService from './NoteService';
 import ListNotesRow from './ListNotesRow';
 
@@ -35,13 +36,22 @@ export default class ListNotes extends Component {
     }
 
     onDelete(event) {
-      if (window.confirm('Are you sure?')){
-        let id = event.target.id;
-        var thisRef = this;
-        this.noteService.delete(id,()=>{
-          thisRef.fillData();
-        });
-      }
+      let thisRef = this;
+      let id = event.target.id;
+      Swal.fire({
+        title: "Are you sure?", 
+        text: "If you click 'OK', the note will be deleted", 
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.value) {
+          
+          thisRef.noteService.delete(id,()=>{
+            thisRef.fillData();
+          });
+        }
+      });
     }
 
     onUpdate(event) {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Swal from 'sweetalert2';
 import UserService from './UserService';
 
 export default class Logout extends Component {
@@ -14,7 +15,11 @@ export default class Logout extends Component {
       if (res === true) {
         window.location.reload();
       } else {
-        alert('Unable to log out! Session may have timedout or service may be inaccessible.');
+        Swal.fire({
+          icon: 'error',
+          title: 'Unable to log out',
+          text: 'Session may have timedout or service may be inaccessible'
+        });
         window.location.reload();
       }
     });
