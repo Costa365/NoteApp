@@ -3,16 +3,19 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import Login from './Login';
 import Logout from './Logout';
-import Register from './Register';
-import WithAuth from './WithAuth';
 
 export default class Header extends Component {
 
   constructor(props) {
     super(props);
-    this.LoginComp = WithAuth(Login,false);
-    this.RegisterComp = WithAuth(Register,false);
-    this.LogoutComp = WithAuth(Logout);
+    
+    if(this.props.user != null){
+      this.LogoutComp = <Logout />;
+    }
+    else {
+      this.LoginComp = <Login />;
+      this.registerLink = <a href="/Register">Register</a>;
+    }
   }
 
   render() {
@@ -23,9 +26,9 @@ export default class Header extends Component {
         {this.props.user}
         <Router>
           <span>
-            <this.LoginComp />
-            <this.RegisterComp />
-            <this.LogoutComp />
+            {this.LoginComp}
+            {this.LogoutComp}
+            {this.registerLink}
           </span>
         </Router>
         </div>

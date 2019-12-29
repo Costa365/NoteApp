@@ -27,7 +27,11 @@ export default class Register extends Component {
           icon: 'success',
           title: 'Registered successfully',
           text: 'You may now log in'
-        });
+        }).then((result) => {
+          if (result.value) {
+            window.location.replace("/");
+          }});
+
       } else {
         Swal.fire({
           icon: 'error',

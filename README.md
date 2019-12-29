@@ -41,3 +41,4 @@ db.Notes.remove({});
 
 Created using [MERN Tutorial](https://medium.com/codebase/series-mern-from-scratch-to-a-robust-solution-1af15204e281)
 [JWT Tutorial](https://medium.com/@faizanv/authentication-for-your-react-and-express-application-w-json-web-tokens-923515826e0#4010)
+[Bootstrap theme](https://bootswatch.com/3/cerulean)

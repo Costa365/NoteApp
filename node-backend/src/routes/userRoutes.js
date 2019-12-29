@@ -15,17 +15,6 @@ router.route('/checkToken').get(withAuth, function (req, res) {
   res.sendStatus(200);
 });
 
-// Get All Items
-router.route('/users').get(withAuth, function (req, res) {
-  User.find(function (err, items){
-    if(err){
-      console.log(err);
-    } else {
-      res.json(items);
-    }
-  });
-});
-
 // Register a user
 router.route('/register').post(function (req, res) {
   const { email, password } = req.body;
