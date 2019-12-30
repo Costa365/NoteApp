@@ -17,7 +17,10 @@ export default class App extends Component {
     this.userState = new UserState();
 
     if(!this.userState.isLoggedIn()){
-      this.RegisterComp = <Register />;
+      this.RegisterComp = <div>
+        Create notes online and access them from your browser. Register now and start creating notes! 
+        <Register />
+      </div>;
     }
   }
 
