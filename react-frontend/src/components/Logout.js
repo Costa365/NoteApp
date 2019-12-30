@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Swal from 'sweetalert2';
 import UserService from './UserService';
+import './Styles.css';
 
 export default class Logout extends Component {
   
@@ -27,7 +28,7 @@ export default class Logout extends Component {
 
   render() {
     return (
-      <button className="btn btn-primary mb-2" onClick={this.handleClick}>Logout</button>
+      <button className="btn btn-primary mb-2 styles-margin" onClick={this.handleClick}>Logout</button>
     );
   }
 }

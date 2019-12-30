@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Swal from 'sweetalert2';
 import UserService from './UserService';
+import "./Styles.css";
 
 export default class Login extends Component {
   constructor(props) {
@@ -40,7 +41,7 @@ export default class Login extends Component {
     return (
       <form className="form-inline" onSubmit={this.onSubmit}>
         <input
-          className="form-control"
+          className="form-control styles-margin"
           type="email"
           name="email"
           id="inputEmailLogin"
@@ -50,7 +51,7 @@ export default class Login extends Component {
           required
         />
         <input
-          className="form-control"
+          className="form-control styles-margin"
           type="password"
           name="password"
           placeholder="Enter password"
@@ -58,7 +59,7 @@ export default class Login extends Component {
           onChange={this.handleInputChange}
           required
         />
-       <input className="btn btn-primary mb-2" type="submit" value="Login"/>
+       <input className="btn btn-primary mb-2 styles-margin" type="submit" value="Login"/>
       </form>
     );
   }

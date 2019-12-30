@@ -33,21 +33,19 @@ export default class AddNote extends Component {
 
     render() {
       return (
-        <div className="container">
-          <form onSubmit={this.handleSubmit}>
-            <div className="panel panel-default">
-              <div className="panel-heading">Add Task</div>
-              <div className="panel-body">
-              <p>Note</p>
-                <textarea name="text" cols="40" rows="5" type="text" value={this.state.value} onChange={this.handleChange} className="form-control"></textarea>
-              </div>
-              <div className="panel-footer">
-              <button type="submit" className="btn btn-primary">Add</button>
-              <button type="button" className="btn btn-default" onClick={this.handleCancel}>Cancel</button>
-              </div>
+        <form onSubmit={this.handleSubmit}>
+          <div className="panel panel-default">
+            <div className="panel-heading">Add note</div>
+            <div className="panel-body">
+            <p>Note</p>
+              <textarea name="text" cols="40" rows="5" type="text" value={this.state.value} onChange={this.handleChange} className="form-control"></textarea>
             </div>
-          </form>
-        </div>
+            <div className="panel-footer">
+            <button type="submit" className="btn btn-primary">Add</button>
+            <button type="button" className="btn btn-default" onClick={this.handleCancel}>Cancel</button>
+            </div>
+          </div>
+        </form>
       );
     }
   }

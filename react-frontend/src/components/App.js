@@ -15,12 +15,18 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.userState = new UserState();
+
+    if(!this.userState.isLoggedIn()){
+      this.RegisterComp = <Register />;
+    }
   }
 
   render() {
     return (
       <div className="container">
         <Header user={this.userState.userName()}/>
+
+        {this.RegisterComp}
 
         <Router>
         

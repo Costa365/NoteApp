@@ -3,6 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import Login from './Login';
 import Logout from './Logout';
+import './Styles.css';
 
 export default class Header extends Component {
 
@@ -14,7 +15,6 @@ export default class Header extends Component {
     }
     else {
       this.LoginComp = <Login />;
-      this.registerLink = <a href="/Register">Register</a>;
     }
   }
 
@@ -22,15 +22,18 @@ export default class Header extends Component {
     return (
       <nav className="navbar navbar-default">
         <div className="container">
-        <a className="navbar-brand" href="/#">Notes</a>
-        {this.props.user}
+
+        <a className="navbar-brand" href="/#" title="Notes"> 
+        <img className="styles-logo-img" src="./logo.png" alt=""/> 
+        </a>
+        <span className="navbar-text pull-right">{this.props.user}
         <Router>
           <span>
             {this.LoginComp}
             {this.LogoutComp}
-            {this.registerLink}
           </span>
         </Router>
+        </span>
         </div>
       </nav>
     );
