@@ -19,6 +19,7 @@ export default class App extends Component {
     if(!this.userState.isLoggedIn()){
       this.RegisterComp = <div>
         Create notes online and access them from your browser. Register now and start creating notes! 
+        <div className="styles-div-margin"></div>
         <Register />
       </div>;
     }

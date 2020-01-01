@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NoteService from './NoteService';
+import './Styles.css'
 
 export default class AddNote extends Component {
 
@@ -35,14 +36,14 @@ export default class AddNote extends Component {
       return (
         <form onSubmit={this.handleSubmit}>
           <div className="panel panel-default">
-            <div className="panel-heading">Add note</div>
+            <div className="panel-heading">Add Note</div>
             <div className="panel-body">
             <p>Note</p>
               <textarea name="text" cols="40" rows="5" type="text" value={this.state.value} onChange={this.handleChange} className="form-control"></textarea>
             </div>
             <div className="panel-footer">
-            <button type="submit" className="btn btn-primary">Add</button>
-            <button type="button" className="btn btn-default" onClick={this.handleCancel}>Cancel</button>
+            <button type="submit" className="btn btn-primary styles-margin">Add</button>
+            <button type="button" className="btn btn-default styles-margin" onClick={this.handleCancel}>Cancel</button>
             </div>
           </div>
         </form>

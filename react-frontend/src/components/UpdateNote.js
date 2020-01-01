@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NoteService from './NoteService';
+import './Styles.css'
 
 export default class UpdateNote extends Component {
 
@@ -59,8 +60,8 @@ export default class UpdateNote extends Component {
                 <textarea cols="40" rows="6" type="text" value={this.state.desc} onChange={this.handleChange} className="form-control"></textarea>
           </div>
           <div className="panel-footer">
-          <button type="submit" className="btn btn-primary">Update</button>
-          <button type="button" className="btn btn-default" onClick={this.handleCancel}>Cancel</button>
+          <button type="submit" className="btn btn-primary styles-margin">Update</button>
+          <button type="button" className="btn btn-default styles-margin" onClick={this.handleCancel}>Cancel</button>
           </div>
         </div>
       </form>

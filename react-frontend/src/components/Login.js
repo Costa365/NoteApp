@@ -45,7 +45,7 @@ export default class Login extends Component {
           type="email"
           name="email"
           id="inputEmailLogin"
-          placeholder="Enter email"
+          placeholder="Email"
           value={this.state.email}
           onChange={this.handleInputChange}
           required
@@ -54,12 +54,12 @@ export default class Login extends Component {
           className="form-control styles-margin"
           type="password"
           name="password"
-          placeholder="Enter password"
+          placeholder="Password"
           value={this.state.password}
           onChange={this.handleInputChange}
           required
         />
-       <input className="btn btn-primary mb-2 styles-margin" type="submit" value="Login"/>
+       <input className="btn btn-primary mb-2 styles-margin styles-button-margin" type="submit" value="Login"/>
       </form>
     );
   }

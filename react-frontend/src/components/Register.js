@@ -50,7 +50,7 @@ export default class Register extends Component {
           className="form-control styles-margin"
           type="email"
           name="email"
-          placeholder="Enter email"
+          placeholder="Email"
           value={this.state.email}
           onChange={this.handleInputChange}
           required
@@ -59,7 +59,7 @@ export default class Register extends Component {
           className="form-control styles-margin"
           type="password"
           name="password"
-          placeholder="Enter password"
+          placeholder="Password"
           value={this.state.password}
           onChange={this.handleInputChange}
           required

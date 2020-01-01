@@ -1,9 +1,18 @@
 .styles-margin{
-    margin: 2px;
+  margin: 2px;
+}
+
+.styles-button-margin{
+  margin-right: 8px;
+}
+
+.styles-div-margin{
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .styles-logo-img {
-    max-height: 80px;
-    margin-top: -20px;
-    margin-left: -20px;
-  }
+  max-height: 80px;
+  margin-top: -20px;
+  margin-left: -20px;
+}

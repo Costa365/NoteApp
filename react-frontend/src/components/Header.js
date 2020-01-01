@@ -12,6 +12,7 @@ export default class Header extends Component {
     
     if(this.props.user != null){
       this.LogoutComp = <Logout />;
+      this.UserName = <span className="styles-margin">{this.props.user}</span>
     }
     else {
       this.LoginComp = <Login />;
@@ -26,7 +27,7 @@ export default class Header extends Component {
         <a className="navbar-brand" href="/#" title="Notes"> 
         <img className="styles-logo-img" src="./logo.png" alt=""/> 
         </a>
-        <span className="navbar-text pull-right">{this.props.user}
+        <span className="navbar-text pull-right">{this.UserName}
         <Router>
           <span>
             {this.LoginComp}
