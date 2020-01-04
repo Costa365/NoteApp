@@ -5,11 +5,12 @@ export default class UserService {
 
   constructor(props) {
     this.userState = new UserState();
+    this.host = window.location.protocol + "//" + window.location.hostname;
   }
 
   isAuth(callback) {
     let thisRef = this;
-    axios.get('http://localhost:6200/user/checkToken', {withCredentials:true})
+    axios.get(this.host + ':6200/user/checkToken', {withCredentials:true})
     .then((response) => {
       callback(response.data);
     })
@@ -24,7 +25,7 @@ export default class UserService {
 
   login(em, pw, callback) {
     let thisRef = this;
-    axios.post('http://localhost:6200/user/login/', {
+    axios.post(this.host + ':6200/user/login/', {
     email: em, password: pw
     }, {withCredentials: true})
     .then(function (response) {
@@ -38,7 +39,7 @@ export default class UserService {
 
   logout(callback) {
     this.userState.loggedOut();
-    axios.post('http://localhost:6200/user/logout/', {
+    axios.post(this.host + ':6200/user/logout/', {
       action: 'logout'
     }, {withCredentials: true})
     .then(function (response) {
@@ -50,7 +51,7 @@ export default class UserService {
   }
 
   register(em, pw,callback) {
-    axios.post('http://localhost:6200/user/register/', {
+    axios.post(this.host + ':6200/user/register/', {
     email: em, password: pw
     })
     .then(function (response) {
