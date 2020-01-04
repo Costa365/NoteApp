@@ -4,7 +4,7 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const config = require('./config');
 const withAuth = require('./middleware');
-const User = require('../models/User');
+const User = require('../models/user');
 
 
 router.route('/secret').get(withAuth, function (req, res) {

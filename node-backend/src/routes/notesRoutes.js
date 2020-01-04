@@ -4,7 +4,7 @@ var router = express.Router();
 var withAuth = require('./middleware');
 
 //Schema
-var Notes = require('../models/Notes');
+var Notes = require('../models/notes');
 
 // Get Specific
 router.route('/:id').get(withAuth, function (req, res) {

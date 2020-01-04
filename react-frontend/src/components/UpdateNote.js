@@ -55,7 +55,7 @@ export default class UpdateNote extends Component {
         <div className="panel panel-default">
           <div className="panel-heading">Edit Note</div>
           <div className="panel-body">
-          <p>Task description</p>
+          <p>Note</p>
             <input type="hidden" value={this.state._id} />
                 <textarea cols="40" rows="6" type="text" value={this.state.desc} onChange={this.handleChange} className="form-control"></textarea>
           </div>
