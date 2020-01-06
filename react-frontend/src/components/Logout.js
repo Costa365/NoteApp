@@ -20,8 +20,9 @@ export default class Logout extends Component {
           icon: 'error',
           title: 'Unable to log out',
           text: 'Session may have timedout or service may be inaccessible'
+        }).then(() => {
+          window.location.reload();
         });
-        window.location.reload();
       }
     });
   }

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Swal from 'sweetalert2';
 import UserState from './UserState';
 
 export default class UserService {
@@ -16,8 +17,14 @@ export default class UserService {
     })
     .catch(function (error) {
       if(thisRef.userState.isLoggedIn()){
-        thisRef.userState.sessionEnded();
-        window.location.reload();
+        Swal.fire({
+          icon: 'info',
+          title: 'User logged out',
+          text: 'Session has timedout, so please log in again'
+        }).then(() => {
+          thisRef.userState.sessionEnded();
+          window.location.reload();
+        });
       }
       callback(null);
     });

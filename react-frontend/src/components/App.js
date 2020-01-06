@@ -17,23 +17,16 @@ export default class App extends Component {
     this.userState = new UserState();
 
     if(!this.userState.isLoggedIn()){
-      this.RegisterComp = <div>
-        Create notes online and access them from your browser. Register now and start creating notes! 
-        <div className="styles-div-margin"></div>
-        <Register />
-      </div>;
+      this.RegisterComp = 
+        <div>
+          Create notes online and access them from your browser. Register now and start creating notes! 
+          <div className="styles-div-margin"></div>
+          <Register />
+        </div>;
     }
-  }
-
-  render() {
-    return (
-      <div className="container">
-        <Header user={this.userState.userName()}/>
-
-        {this.RegisterComp}
-
+    else{
+      this.ListComp = 
         <Router>
-        
           <div>
             <Switch>
               <Route exact path='/' component={WithAuth(ListNotes)} />
@@ -43,8 +36,17 @@ export default class App extends Component {
               <Route component={NoMatch} />
             </Switch>
           </div>
-
         </Router>
+    }
+  }
+
+  render() {
+    return (
+      <div className="container">
+        <Header user={this.userState.userName()}/>
+        
+        {this.RegisterComp}
+        {this.ListComp}
 
         <Footer />
       </div>
