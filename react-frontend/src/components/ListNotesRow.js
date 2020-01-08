@@ -9,7 +9,7 @@ export default class ListNotesRow extends Component {
           <td>
             <button id={this.props.obj._id} onClick={this.props.onUpdate} type="button" value="Edit" className="btn btn-primary btn-xs styles-margin">Edit</button>
             <button id={this.props.obj._id} onClick={this.props.onDelete} type="button" value="Delete" className="btn btn-danger btn-xs styles-margin">Delete</button>
-            <textarea readOnly cols="10" rows="2" type="text" value={this.props.obj.desc} onChange={this.handleChange} className="form-control"></textarea>
+            <div contentEditable="false" className="styles-div-note-view" type="text">{this.props.obj.desc}</div>
           </td>
         </tr>
     );

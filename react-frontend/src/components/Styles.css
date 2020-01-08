@@ -16,3 +16,10 @@
   margin-top: -20px;
   margin-left: -20px;
 }
+
+.styles-div-note-view {
+  display:inline-block;
+  border: solid 1px #d0d0d0;
+  width: 100%;
+  white-space: pre-wrap;
+}

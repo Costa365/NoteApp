@@ -47,6 +47,7 @@ use test
 db.Notes.find();
 db.Notes.remove({});
 ```
+
 ### References
 
 - Created using [MERN Tutorial](https://medium.com/codebase/series-mern-from-scratch-to-a-robust-solution-1af15204e281)
