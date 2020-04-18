@@ -7,6 +7,7 @@ import ListNotes from './ListNotes';
 import UpdateNote from './UpdateNote';
 import WithAuth from './WithAuth';
 import Register from './Register';
+import Login from './Login';
 import UserState from './UserState';
 import NoMatch from './NoMatch';
 
@@ -17,22 +18,30 @@ export default class App extends Component {
     this.userState = new UserState();
 
     if(!this.userState.isLoggedIn()){
-      this.RegisterComp = 
-        <div>
-          Create notes online and access them from your browser. Register now and start creating notes! 
-          <div className="styles-div-margin"></div>
-          <Register />
-        </div>;
-    }
-    else{
-      this.ListComp = 
+      this.Comp =
         <Router>
           <div>
+            <Header user={this.userState.userName()}/>
+            Create notes online and access them from your browser. Register now and start creating notes! 
+            <div className="styles-div-margin"></div>
+              <div>  
+                <Switch>
+                  <Route path='/register' component={Register} />
+                  <Route path='/login' component={Login} />
+                </Switch>
+              </div>
+          </div>
+        </Router>
+    }
+    else{
+      this.Comp = 
+        <Router>
+          <div>
+            <Header user={this.userState.userName()}/>
             <Switch>
               <Route exact path='/' component={WithAuth(ListNotes)} />
               <Route path='/add' component={WithAuth(AddNote)} />
               <Route path='/update/:id' component={WithAuth(UpdateNote)} />
-              <Route path='/register' component={Register} />
               <Route component={NoMatch} />
             </Switch>
           </div>
@@ -42,14 +51,12 @@ export default class App extends Component {
 
   render() {
     return (
+      <Router>
       <div className="container">
-        <Header user={this.userState.userName()}/>
-        
-        {this.RegisterComp}
-        {this.ListComp}
-
+        {this.Comp}
         <Footer />
       </div>
+      </Router>
     );
   }
 }

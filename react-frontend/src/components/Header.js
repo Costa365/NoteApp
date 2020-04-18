@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-
-import Login from './Login';
+import { Link } from 'react-router-dom';
 import Logout from './Logout';
 import './Styles.css';
 
@@ -15,7 +13,17 @@ export default class Header extends Component {
       this.UserName = <span className="styles-margin">{this.props.user}</span>
     }
     else {
-      this.LoginComp = <Login />;
+      this.AccessComp = 
+        <div>
+        
+        <Link to="/login">
+        <button className="btn btn-primary mb-2 styles-margin styles-button-margin">Login</button>
+        </Link>
+      
+        <Link to="/register">
+        <button className="btn btn-primary mb-2 styles-margin styles-button-margin">Register</button>
+        </Link>
+        </div>
     }
   }
 
@@ -28,12 +36,10 @@ export default class Header extends Component {
         <img className="styles-logo-img" src="./logo.png" alt=""/> 
         </a>
         <span className="navbar-text pull-right">{this.UserName}
-        <Router>
-          <span>
-            {this.LoginComp}
+          <span>  
             {this.LogoutComp}
+            {this.AccessComp}
           </span>
-        </Router>
         </span>
         </div>
       </nav>

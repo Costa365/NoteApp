@@ -26,7 +26,8 @@ export default class Login extends Component {
     
     this.userService.login(this.state.email, this.state.password, res=>{
       if (res === true) {
-        window.location.reload();
+        //window.location.reload();
+        window.open("/","_self");
       } else {
         Swal.fire({
           icon: 'error',
