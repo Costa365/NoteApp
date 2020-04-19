@@ -8,8 +8,11 @@ import UpdateNote from './UpdateNote';
 import WithAuth from './WithAuth';
 import Register from './Register';
 import Login from './Login';
+import Intro from './Intro';
 import UserState from './UserState';
 import NoMatch from './NoMatch';
+import './Styles.css';
+
 
 export default class App extends Component {
 
@@ -22,13 +25,11 @@ export default class App extends Component {
         <Router>
           <div>
             <Header user={this.userState.userName()}/>
-            Create notes online and access them from your browser. Register now and start creating notes! 
-            <div>
-            <img className="styles-tech-img" src="./mern.jpg" alt=""/> 
-            </div> 
+            
             <div className="styles-div-margin"></div>
               <div>  
                 <Switch>
+                  <Route exact path='/' component={Intro} />
                   <Route path='/register' component={Register} />
                   <Route path='/login' component={Login} />
                 </Switch>
