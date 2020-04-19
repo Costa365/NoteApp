@@ -10,18 +10,18 @@ export default class Header extends Component {
     
     if(this.props.user != null){
       this.LogoutComp = <Logout />;
-      this.UserName = <span className="styles-margin">{this.props.user}</span>
+      this.UserName = <span className="styles-margin styles-username-text">{this.props.user}</span>
     }
     else {
       this.AccessComp = 
         <div>
         
         <Link to="/login">
-        <button className="btn btn-primary mb-2 styles-margin styles-button-margin">Login</button>
+        <button className="btn btn-primary mb-2 styles-margin styles-button-margin styles-header-button">Login</button>
         </Link>
       
         <Link to="/register">
-        <button className="btn btn-primary mb-2 styles-margin styles-button-margin">Register</button>
+        <button className="btn btn-primary mb-2 styles-margin styles-button-margin styles-header-button">Register</button>
         </Link>
         </div>
     }

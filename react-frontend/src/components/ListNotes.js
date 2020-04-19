@@ -40,7 +40,7 @@ export default class ListNotes extends Component {
       let id = event.target.id;
       Swal.fire({
         title: "Are you sure?", 
-        text: "If you click 'OK', the note will be deleted", 
+        text: "Note will be permanently deleted", 
         icon: "warning",
         showCancelButton: true,
         confirmButtonText: 'Yes, delete it!'
