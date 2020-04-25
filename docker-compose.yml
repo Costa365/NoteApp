@@ -8,6 +8,9 @@ services:
      - "27017:27017"
   backend:
     build: ./node-backend/
+    environment:
+      - NOTES_ENC_KEY=${NOTES_ENC_KEY}
+      - NOTES_SIG_KEY=${NOTES_SIG_KEY}
     ports:
       - "6200:6200"
     volumes:

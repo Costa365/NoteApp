@@ -21,6 +21,7 @@ These are the steps I followed to create the application before running in Docke
 ```console
 npm install express --save
 npm install mongoose --save
+npm install mongoose-encryption --save
 npm install body-parser --save
 npm install cors --save
 npm install bcryptjs --save
@@ -28,6 +29,12 @@ npm install jsonwebtoken --save
 npm install cookie-parser --save
 npm install sweetalert2 --save
 ```
+
+Generate pair of keys for encyption and assign to environment variables
+```console
+NOTES_ENC_KEY = openssl rand -base64 32
+NOTES_SIG_KEY = openssl rand -base64 64
+```console
 
 #### Frontend
 
