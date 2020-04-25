@@ -2,7 +2,21 @@
 
 Simple notes application created using Mongodb, Express, ReactJS, NodeJS.
 
-### Backend
+### Run
+
+Docker and Docker-compose should be installed on the system.
+
+```console
+docker-compose up
+```
+
+Application can now be access on http://localhost:3000
+
+### Development
+
+These are the steps I followed to create the application before running in Docker.
+
+#### Backend
 
 ```console
 npm install express --save
@@ -15,14 +29,14 @@ npm install cookie-parser --save
 npm install sweetalert2 --save
 ```
 
-### Frontend
+#### Frontend
 
 ```console
 npm install react-router-dom --save
 npm install axios --save
 ```
 
-### Postman
+#### Postman
 
 ```console
 GET http://localhost:6200/notes
@@ -36,7 +50,7 @@ POST http://localhost:6200/notes/add
     desc : this is a note
 ```
 
-### Monngdb
+#### Mongodb
 
 ```console
 docker exec -it <container-id> /bin/bash

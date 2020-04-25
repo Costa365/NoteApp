@@ -25,8 +25,6 @@ export default class App extends Component {
         <Router>
           <div>
             <Header user={this.userState.userName()}/>
-            
-            <div className="styles-div-margin"></div>
               <div>  
                 <Switch>
                   <Route exact path='/' component={Intro} />
@@ -56,7 +54,7 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-      <div className="container">
+      <div className="container styles-main">
         {this.Comp}
         <Footer />
       </div>
