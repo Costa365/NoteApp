@@ -4,7 +4,7 @@ Simple notes application created using Mongodb, Express, ReactJS, NodeJS.
 
 ### Run
 
-Docker and Docker-compose should be installed on the system.
+Docker and Docker-compose should be installed on the system. Create NOTES_ENC_KEY and NOTES_SIG_KEY environment variables as described in Backend section below.
 
 ```console
 docker-compose up
@@ -34,7 +34,7 @@ Generate pair of keys for encyption and assign to environment variables
 ```console
 NOTES_ENC_KEY = openssl rand -base64 32
 NOTES_SIG_KEY = openssl rand -base64 64
-```console
+```
 
 #### Frontend
 
