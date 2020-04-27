@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const config = require('./config');
 const withAuth = require('./middleware');
 const User = require('../models/user');
-
+const Email = require('../services/email');
 
 router.route('/secret').get(withAuth, function (req, res) {
   res.send('The password is potato');
@@ -26,6 +26,7 @@ router.route('/register').post(function (req, res) {
         .send("Error registering new user please try again.");
     } else {
       res.status(200).send("Welcome to the club!");
+      Email.sendWelcomeMail(email);
     }
   });
 });

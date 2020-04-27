@@ -11,6 +11,8 @@ services:
     environment:
       - NOTES_ENC_KEY=${NOTES_ENC_KEY}
       - NOTES_SIG_KEY=${NOTES_SIG_KEY}
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASSWORD=${EMAIL_PASSWORD}
     ports:
       - "6200:6200"
     volumes:

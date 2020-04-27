@@ -4,7 +4,7 @@ Simple notes application created using Mongodb, Express, ReactJS, NodeJS.
 
 ### Run
 
-Docker and Docker-compose should be installed on the system. Create NOTES_ENC_KEY and NOTES_SIG_KEY environment variables as described in Backend section below.
+Docker and Docker-compose should be installed on the system. Create NOTES_ENC_KEY, NOTES_SIG_KEY, EMAIL_USER and EMAIL_PASSWORD environment variables as described in Backend section below.
 
 ```console
 docker-compose up
@@ -28,12 +28,19 @@ npm install bcryptjs --save
 npm install jsonwebtoken --save
 npm install cookie-parser --save
 npm install sweetalert2 --save
+npm install nodemailer --save
 ```
 
 Generate pair of keys for encyption and assign to environment variables
 ```console
 NOTES_ENC_KEY = openssl rand -base64 32
 NOTES_SIG_KEY = openssl rand -base64 64
+```
+
+Create environment variables for gmail account which will be used. Access for less secure apps shopuld be enabled.
+```console
+EMAIL_USER=xxx@gmail.com
+EMAIL_PASSWORD=xxxxxx
 ```
 
 #### Frontend
