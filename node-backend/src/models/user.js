@@ -8,7 +8,7 @@ const tokenLength = 16;
 const UserSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  resetToken: { type: String, required: false }
+  token: { type: String, required: true }
 },
 {
     collection: 'User'
@@ -17,6 +17,7 @@ const UserSchema = new mongoose.Schema({
 
 UserSchema.pre('save', function(next) {
   // Check if document is new or a new password has been set
+  console.log('11111');
   if (this.isNew || this.isModified('password')) {
     // Saving reference to this because of changing scopes
     const document = this;
@@ -37,11 +38,11 @@ UserSchema.pre('save', function(next) {
 
 UserSchema.methods.isCorrectPassword = function(password, callback){
   bcrypt.compare(password, this.password, function(err, same) {
-      if (err) {
+    if (err) {
       callback(err);
-      } else {
+    } else {
       callback(err, same);
-      }
+    }
   });
 }
 
@@ -49,6 +50,10 @@ UserSchema.methods.createToken = function(callback){
   const token = crypto.randomBytes(tokenLength)
     .toString('hex')
     .slice(0, tokenLength);
+
+  const document = this;
+  document.token = token;
+  document.save();
   
   callback(token);
 }

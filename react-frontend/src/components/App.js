@@ -8,6 +8,8 @@ import UpdateNote from './UpdateNote';
 import WithAuth from './WithAuth';
 import Register from './Register';
 import Login from './Login';
+import Reset from './Reset';
+import Forgot from './Forgot';
 import Intro from './Intro';
 import UserState from './UserState';
 import NoMatch from './NoMatch';
@@ -30,6 +32,8 @@ export default class App extends Component {
                   <Route exact path='/' component={Intro} />
                   <Route path='/register' component={Register} />
                   <Route path='/login' component={Login} />
+                  <Route path='/reset' component={Reset} />
+                  <Route path='/forgot' component={Forgot} />
                 </Switch>
               </div>
           </div>

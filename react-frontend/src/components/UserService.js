@@ -68,4 +68,28 @@ export default class UserService {
       callback(false);
     });
   }
+
+  forgot(em,callback) {
+    axios.post(this.host + ':6200/user/forgot/', {
+      email: em
+    })
+    .then(function (response) {
+      callback(true);
+    })
+    .catch(function (error) {
+      callback(false);
+    });
+  }
+
+  reset(pw,callback) {
+    axios.post(this.host + ':6200/user/reset/', {
+      password: pw
+    })
+    .then(function (response) {
+      callback(true);
+    })
+    .catch(function (error) {
+      callback(false);
+    });
+  }
 }

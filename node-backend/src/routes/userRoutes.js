@@ -14,11 +14,13 @@ router.route('/checkToken').get(withAuth, function (req, res) {
 
 // Register a user
 router.route('/register').post(function (req, res) {
-  const { email, password } = req.body;
-  const user = new User({ email, password });
-
+  const { email, password } = req.body; 
+  const token = ' ';
+  const user = new User({ email, password, token });
+  
   user.save(function(err) {
     if (err) {
+      console.log (err);
       res.status(500)
         .send("Error registering new user please try again.");
     } else {
@@ -96,7 +98,6 @@ router.route('/forgot').post(function (req, res) {
             error: 'Incorrect email or password'
           });  
         } else {
-          user.resetToken = token;
           res.status(200).send("Reset Link sent to email"); 
           Email.sendResetMail(email, token);
         }
