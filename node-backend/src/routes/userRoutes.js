@@ -72,6 +72,38 @@ router.route('/logout').post(withAuth, function (req, res) {
   res.clearCookie('token')
   return res.status(200).send(); 
 });
+
+router.route('/forgot').post(function (req, res) {
+  const { email } = req.body;
+
+  User.findOne({ email }, function(err, user) {
+    if (err) {
+      console.error(err);
+      res.status(500)
+        .json({
+        error: 'Internal error please try again'
+      });
+    } else if (!user) {
+      res.status(401)
+        .json({
+          error: 'Incorrect email or password'
+        });
+    } else {
+      user.createToken(function(token) {
+        if(token.length == 0){
+          res.status(401)
+          .json({
+            error: 'Incorrect email or password'
+          });  
+        } else {
+          user.resetToken = token;
+          res.status(200).send("Reset Link sent to email"); 
+          Email.sendResetMail(email, token);
+        }
+      });
+    }
+  });
+});
   
 
 module.exports = router;

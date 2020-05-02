@@ -1,9 +1,14 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const crypto = require('crypto');
+
 const saltRounds = 10;
+const tokenLength = 16;
+
 const UserSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  resetToken: { type: String, required: false }
 },
 {
     collection: 'User'
@@ -38,6 +43,14 @@ UserSchema.methods.isCorrectPassword = function(password, callback){
       callback(err, same);
       }
   });
+}
+
+UserSchema.methods.createToken = function(callback){
+  const token = crypto.randomBytes(tokenLength)
+    .toString('hex')
+    .slice(0, tokenLength);
+  
+  callback(token);
 }
 
 module.exports = mongoose.model('User', UserSchema);
