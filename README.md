@@ -37,10 +37,15 @@ NOTES_ENC_KEY = openssl rand -base64 32
 NOTES_SIG_KEY = openssl rand -base64 64
 ```
 
-Create environment variables for gmail account which will be used. Access for less secure apps shopuld be enabled.
+Create environment variables for gmail account which will be used. Access for less secure apps should be enabled.
 ```console
 EMAIL_USER=xxx@gmail.com
 EMAIL_PASSWORD=xxxxxx
+```
+
+Create environment variable for secret string used for json seb token
+```console
+NOTES_SECRET=xxxxxxxxxx
 ```
 
 #### Frontend

@@ -13,6 +13,7 @@ services:
       - NOTES_SIG_KEY=${NOTES_SIG_KEY}
       - EMAIL_USER=${EMAIL_USER}
       - EMAIL_PASSWORD=${EMAIL_PASSWORD}
+      - NOTES_SECRET=${NOTES_SECRET}
     ports:
       - "6200:6200"
     volumes:
