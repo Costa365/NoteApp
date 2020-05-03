@@ -17,7 +17,6 @@ const UserSchema = new mongoose.Schema({
 
 UserSchema.pre('save', function(next) {
   // Check if document is new or a new password has been set
-  console.log('11111');
   if (this.isNew || this.isModified('password')) {
     // Saving reference to this because of changing scopes
     const document = this;
@@ -56,6 +55,15 @@ UserSchema.methods.createToken = function(callback){
   document.save();
   
   callback(token);
+}
+
+UserSchema.methods.updatePassword = function(password, callback){
+  const document = this;
+  document.token = ' ';
+  document.password = password;
+  document.save();
+  
+  callback(true);
 }
 
 module.exports = mongoose.model('User', UserSchema);

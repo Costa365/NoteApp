@@ -81,8 +81,9 @@ export default class UserService {
     });
   }
 
-  reset(pw,callback) {
+  reset(tk,pw,callback) {
     axios.post(this.host + ':6200/user/reset/', {
+      token: tk,
       password: pw
     })
     .then(function (response) {

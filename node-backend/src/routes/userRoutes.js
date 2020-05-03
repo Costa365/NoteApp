@@ -24,6 +24,7 @@ router.route('/register').post(function (req, res) {
       res.status(500)
         .send("Error registering new user please try again.");
     } else {
+      console.log('Register ' + user.email);
       res.status(200).send("Welcome to the club!");
       Email.sendWelcomeMail(email);
     }
@@ -85,22 +86,35 @@ router.route('/forgot').post(function (req, res) {
         .json({
         error: 'Internal error please try again'
       });
+    } else if (user) {
+      console.log('Password forgot for ' + user.email);
+      user.createToken(function(token) {        
+        res.status(200).send("OK"); 
+        Email.sendResetMail(email, token);
+      });
+    }
+  });
+});
+
+router.route('/reset').post(function (req, res) {
+  const { token, password } = req.body;
+
+  User.findOne({ token: token }, function(err, user) {
+    if (err) {
+      console.error(err);
+      res.status(500)
+        .json({
+        error: 'Internal error please try again'
+      });
     } else if (!user) {
       res.status(401)
         .json({
-          error: 'Incorrect email or password'
+          error: 'Invalid token - please try again'
         });
     } else {
-      user.createToken(function(token) {
-        if(token.length == 0){
-          res.status(401)
-          .json({
-            error: 'Incorrect email or password'
-          });  
-        } else {
-          res.status(200).send("Reset Link sent to email"); 
-          Email.sendResetMail(email, token);
-        }
+      console.log('Password reset for ' + user.email);
+      user.updatePassword(password, function(token) {
+        res.status(200).send("OK"); 
       });
     }
   });

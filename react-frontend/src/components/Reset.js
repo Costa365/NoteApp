@@ -40,7 +40,7 @@ export default class Reset extends Component {
             text: 'Passwords do not match'
           });
     } else {
-      this.userService.reset(this.state.newPassword, res=>{
+      this.userService.reset(this.state.token, this.state.newPassword, res=>{
         if (res === true) {
           Swal.fire({
             icon: 'success',
