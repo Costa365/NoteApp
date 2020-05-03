@@ -15,8 +15,7 @@ router.route('/checkToken').get(withAuth, function (req, res) {
 // Register a user
 router.route('/register').post(function (req, res) {
   const { email, password } = req.body; 
-  const token = ' ';
-  const user = new User({ email, password, token });
+  const user = new User({ email, password });
   
   user.save(function(err) {
     if (err) {

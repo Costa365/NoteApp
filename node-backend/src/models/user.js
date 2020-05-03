@@ -8,7 +8,7 @@ const tokenLength = 16;
 const UserSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  token: { type: String, required: true }
+  token: { type: String, required: false }
 },
 {
     collection: 'User'
@@ -59,7 +59,7 @@ UserSchema.methods.createToken = function(callback){
 
 UserSchema.methods.updatePassword = function(password, callback){
   const document = this;
-  document.token = ' ';
+  document.token = undefined;
   document.password = password;
   document.save();
   
