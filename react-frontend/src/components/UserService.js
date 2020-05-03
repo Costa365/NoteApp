@@ -30,14 +30,14 @@ export default class UserService {
     });
   }
 
-  login(em, pw, callback) {
+  login(un, pw, callback) {
     let thisRef = this;
     axios.post(this.host + ':6200/user/login/', {
-    email: em, password: pw
+    username: un, password: pw
     }, {withCredentials: true})
     .then(function (response) {
       callback(true);
-      thisRef.userState.loggedIn(em);
+      thisRef.userState.loggedIn(un);
     })
     .catch(function (error) {
       callback(false);
@@ -57,9 +57,9 @@ export default class UserService {
     });
   }
 
-  register(em, pw,callback) {
+  register(un, em, pw,callback) {
     axios.post(this.host + ':6200/user/register/', {
-    email: em, password: pw
+    username: un, email: em, password: pw
     })
     .then(function (response) {
       callback(true);

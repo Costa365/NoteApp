@@ -48,7 +48,7 @@ export default class Reset extends Component {
             text: 'You may now log in'
           }).then((result) => {
             if (result.value) {
-              window.location.replace("/");
+              window.location.replace("/login");
             }});
 
         } else {

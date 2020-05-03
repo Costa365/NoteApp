@@ -12,7 +12,7 @@ const withAuth = function(req, res, next) {
         if (err) {
           res.status(401).send('Unauthorized: Invalid token');
         } else {
-          req.email = decoded.email;
+          req.username = decoded.username;
           next();
         }
       });
@@ -21,7 +21,6 @@ const withAuth = function(req, res, next) {
   catch (e) {
     res.status(401).send('Unauthorized: No token provided (exception)');
   }
-  
 }
 
 module.exports = withAuth;

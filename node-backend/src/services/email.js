@@ -14,12 +14,14 @@ const transporter = nodemailer.createTransport({
 var mailOptions = {
   from: 'notesapp001@gmail.com',
   to: 'dummy@dummy.com',
-  subject: 'Welcome to Notes App!',
-  text: 'Thanks for registering with Notes App. You can now log in and start creating notes.'
+  subject: '',
+  text: ''
 };
 
-const sendWelcomeMail = (address) => {
+const sendWelcomeMail = (address, user) => {
   mailOptions.to = address;
+  mailOptions.subject = 'Welcome to Notes App!';
+  mailOptions.text = 'Hey ' + user + ', thanks for registering with Notes App. You can now log in and start creating notes.';
   transporter.sendMail(mailOptions, function(error, info){
     if (error) {
         console.log(error);

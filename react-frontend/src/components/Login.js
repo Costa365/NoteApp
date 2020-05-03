@@ -8,7 +8,7 @@ export default class Login extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      email : '',
+      username : '',
       password: ''
     };
 
@@ -25,7 +25,7 @@ export default class Login extends Component {
   onSubmit = (event) => {
     event.preventDefault();
     
-    this.userService.login(this.state.email, this.state.password, res=>{
+    this.userService.login(this.state.username, this.state.password, res=>{
       if (res === true) {
         //window.location.reload();
         window.open("/","_self");
@@ -33,7 +33,7 @@ export default class Login extends Component {
         Swal.fire({
           icon: 'error',
           title: 'Unable to log in',
-          text: 'Please ensure that email / password are correct'
+          text: 'Please ensure that username / password are correct'
         });
       }
     });
@@ -45,11 +45,10 @@ export default class Login extends Component {
         <form className="form-inline" onSubmit={this.onSubmit}>
           <input
             className="form-control styles-margin"
-            type="email"
-            name="email"
-            id="inputEmailLogin"
-            placeholder="Email"
-            value={this.state.email}
+            type="text"
+            name="username"
+            placeholder="Username"
+            value={this.state.username}
             onChange={this.handleInputChange}
             required
           />

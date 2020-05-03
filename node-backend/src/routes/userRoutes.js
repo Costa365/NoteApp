@@ -14,8 +14,8 @@ router.route('/checkToken').get(withAuth, function (req, res) {
 
 // Register a user
 router.route('/register').post(function (req, res) {
-  const { email, password } = req.body; 
-  const user = new User({ email, password });
+  const { username, email, password } = req.body; 
+  const user = new User({ username:username, email:email, password:password });
   
   user.save(function(err) {
     if (err) {
@@ -25,14 +25,14 @@ router.route('/register').post(function (req, res) {
     } else {
       console.log('Register ' + user.email);
       res.status(200).send("Welcome to the club!");
-      Email.sendWelcomeMail(email);
+      Email.sendWelcomeMail(email, username);
     }
   });
 });
 
 router.route('/login').post(function (req, res) {
-  const { email, password } = req.body;
-  User.findOne({ email }, function(err, user) {
+  const { username, password } = req.body;
+  User.findOne({ username: username }, function(err, user) {
     if (err) {
       console.error(err);
       res.status(500)
@@ -42,7 +42,7 @@ router.route('/login').post(function (req, res) {
     } else if (!user) {
       res.status(401)
         .json({
-          error: 'Incorrect email or password'
+          error: 'Incorrect username or password'
         });
     } else {
       user.isCorrectPassword(password, function(err, same) {
@@ -54,11 +54,11 @@ router.route('/login').post(function (req, res) {
         } else if (!same) {
           res.status(401)
             .json({
-              error: 'Incorrect email or password'
+              error: 'Incorrect username or password'
           });
         } else {
           // Issue token
-          const payload = { email };
+          const payload = { username };
           const token = jwt.sign(payload, config.SECRET, {
             expiresIn: '12h'
           });

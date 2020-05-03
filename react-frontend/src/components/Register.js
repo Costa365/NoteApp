@@ -7,6 +7,7 @@ export default class Register extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      username : '',
       email : '',
       password: ''
     };
@@ -22,7 +23,7 @@ export default class Register extends Component {
 
   onSubmit = (event) => {
     event.preventDefault();
-    this.userService.register(this.state.email, this.state.password, res=>{
+    this.userService.register(this.state.username, this.state.email, this.state.password, res=>{
       if (res === true) {
         Swal.fire({
           icon: 'success',
@@ -30,7 +31,7 @@ export default class Register extends Component {
           text: 'You may now log in'
         }).then((result) => {
           if (result.value) {
-            window.location.replace("/");
+            window.location.replace("/login");
           }});
 
       } else {
@@ -46,6 +47,15 @@ export default class Register extends Component {
   render() {
     return (
       <form className="form-inline" onSubmit={this.onSubmit}>
+        <input
+          className="form-control styles-margin"
+          type="text"
+          name="username"
+          placeholder="Username"
+          value={this.state.username}
+          onChange={this.handleInputChange}
+          required
+        />
         <input
           className="form-control styles-margin"
           type="email"
