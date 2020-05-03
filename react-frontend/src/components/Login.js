@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Swal from 'sweetalert2';
 import UserService from './UserService';
+import { Link } from 'react-router-dom';
 import "./Styles.css";
 
 export default class Login extends Component {
@@ -40,28 +41,31 @@ export default class Login extends Component {
 
   render() {
     return (
-      <form className="form-inline" onSubmit={this.onSubmit}>
-        <input
-          className="form-control styles-margin"
-          type="email"
-          name="email"
-          id="inputEmailLogin"
-          placeholder="Email"
-          value={this.state.email}
-          onChange={this.handleInputChange}
-          required
-        />
-        <input
-          className="form-control styles-margin"
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={this.state.password}
-          onChange={this.handleInputChange}
-          required
-        />
-       <input className="btn btn-primary mb-2 styles-margin styles-button-margin" type="submit" value="Login"/>
-      </form>
+      <div>
+        <form className="form-inline" onSubmit={this.onSubmit}>
+          <input
+            className="form-control styles-margin"
+            type="email"
+            name="email"
+            id="inputEmailLogin"
+            placeholder="Email"
+            value={this.state.email}
+            onChange={this.handleInputChange}
+            required
+          />
+          <input
+            className="form-control styles-margin"
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={this.state.password}
+            onChange={this.handleInputChange}
+            required
+          />
+        <input className="btn btn-primary mb-2 styles-margin styles-button-margin" type="submit" value="Login"/>
+        </form>
+        <Link to="/forgot">Forgot password?</Link>
+      </div>
     );
   }
 }

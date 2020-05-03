@@ -37,7 +37,7 @@ export default class Reset extends Component {
         Swal.fire({
             icon: 'error',
             title: 'Passwords do not match',
-            text: 'Passwords do not match ' + this.state.token
+            text: 'Passwords do not match'
           });
     } else {
       this.userService.reset(this.state.newPassword, res=>{
