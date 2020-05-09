@@ -1,12 +1,14 @@
 version: '2'
 services:
   mongodb:
+    restart: always
     image: "mongo"
     volumes:
       - ./data:/data/db
     ports:
      - "27017:27017"
   backend:
+    restart: always
     build: ./node-backend/
     environment:
       - NOTES_ENC_KEY=${NOTES_ENC_KEY}
@@ -22,6 +24,7 @@ services:
     depends_on:
       - mongodb
   frontend:
+    restart: always
     build: ./react-frontend/
     ports:
       - "3000:3000"
