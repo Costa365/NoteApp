@@ -34,7 +34,7 @@ const sendWelcomeMail = (address, user) => {
 const sendResetMail = (address, token) => {
   mailOptions.to = address;
   mailOptions.subject = 'Password Reset Request';
-  mailOptions.text = 'You can reset using: http://localhost:3000/reset?token=' + token;
+  mailOptions.text = 'You can reset using: https://costa365.hopto.org/reset?token=' + token;
   
   transporter.sendMail(mailOptions, function(error, info){
     if (error) {

@@ -11,7 +11,7 @@ export default class UserService {
 
   isAuth(callback) {
     let thisRef = this;
-    axios.get(this.host + ':6200/user/checkToken', {withCredentials:true})
+    axios.get(this.host + '/user/checkToken', {withCredentials:true})
     .then((response) => {
       callback(response.data);
     })
@@ -32,7 +32,7 @@ export default class UserService {
 
   login(un, pw, callback) {
     let thisRef = this;
-    axios.post(this.host + ':6200/user/login/', {
+    axios.post(this.host + '/user/login/', {
     username: un, password: pw
     }, {withCredentials: true})
     .then(function (response) {
@@ -46,7 +46,7 @@ export default class UserService {
 
   logout(callback) {
     this.userState.loggedOut();
-    axios.post(this.host + ':6200/user/logout/', {
+    axios.post(this.host + '/user/logout/', {
       action: 'logout'
     }, {withCredentials: true})
     .then(function (response) {
@@ -58,7 +58,7 @@ export default class UserService {
   }
 
   register(un, em, pw,callback) {
-    axios.post(this.host + ':6200/user/register/', {
+    axios.post(this.host + '/user/register/', {
     username: un, email: em, password: pw
     })
     .then(function (response) {
@@ -70,7 +70,7 @@ export default class UserService {
   }
 
   forgot(em,callback) {
-    axios.post(this.host + ':6200/user/forgot/', {
+    axios.post(this.host + '/user/forgot/', {
       email: em
     })
     .then(function (response) {
@@ -82,7 +82,7 @@ export default class UserService {
   }
 
   reset(tk,pw,callback) {
-    axios.post(this.host + ':6200/user/reset/', {
+    axios.post(this.host + '/user/reset/', {
       token: tk,
       password: pw
     })

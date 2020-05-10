@@ -35,6 +35,7 @@ services:
       - backend
     container_name: frontend
   notes-letsencrypt:
+    restart: always
     image: linuxserver/letsencrypt
     container_name: notes-letsencrypt
     ports:

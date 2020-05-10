@@ -7,7 +7,7 @@ export default class NoteService {
   }
 
   all(callback) {
-    axios.get(this.host + ':6200/notes', {withCredentials:true})
+    axios.get(this.host + '/notes', {withCredentials:true})
     .then((response) => {
       callback(response.data);
     })
@@ -17,7 +17,7 @@ export default class NoteService {
   }
 
   get(id,callback) {
-    axios.get(this.host + ':6200/notes/'+id, {withCredentials:true})
+    axios.get(this.host + '/notes/'+id, {withCredentials:true})
     .then((response) => {
       callback(response.data);
     })
@@ -27,7 +27,7 @@ export default class NoteService {
   }
 
   add(data,callback) {
-    axios.post(this.host + ':6200/notes/add/', {
+    axios.post(this.host + '/notes/add/', {
     desc: data
     }, {withCredentials:true})
     .then(function (response) {
@@ -39,7 +39,7 @@ export default class NoteService {
   }
 
   update(data, id, callback){
-    axios.post(this.host + ':6200/notes/update/'+id, {
+    axios.post(this.host + '/notes/update/'+id, {
       desc: data
     }, {withCredentials:true})
     .then(function(response) {
@@ -51,7 +51,7 @@ export default class NoteService {
   }
 
   delete(id, callback){
-    axios.get(this.host + ':6200/notes/delete/'+id, {withCredentials:true})
+    axios.get(this.host + '/notes/delete/'+id, {withCredentials:true})
     .then(function(response){
       callback();
     })
