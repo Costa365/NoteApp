@@ -4,6 +4,9 @@ export default class NoteService {
 
   constructor(){
     this.host = window.location.protocol + "//" + window.location.hostname;
+    if(process.env.NODE_ENV === 'development'){
+      this.host = this.host + ':6200';
+    }
   }
 
   all(callback) {

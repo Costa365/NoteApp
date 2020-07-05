@@ -7,6 +7,9 @@ export default class UserService {
   constructor(props) {
     this.userState = new UserState();
     this.host = window.location.protocol + "//" + window.location.hostname;
+    if(process.env.NODE_ENV === 'development'){
+      this.host = this.host + ':6200';
+    }
   }
 
   isAuth(callback) {

@@ -1,14 +1,12 @@
 version: '3'
 services:
   mongodb:
-    restart: always
     image: "mongo"
     volumes:
       - ./data:/data/db
     ports:
      - "27017:27017"
   backend:
-    restart: always
     tty: true
     build: ./node-backend/
     environment:
@@ -25,13 +23,27 @@ services:
     depends_on:
       - mongodb
   frontend:
-    restart: always
     tty: true
-    build: ./react-frontend/
+    build: 
+        context: ./react-frontend/
+        dockerfile: Dockerfile-prod
     ports:
-      - "3000:3000"
+      - "5000:5000"
     volumes:
       - ./react-frontend:/usr/src/app
       - /usr/src/app/node_modules
     depends_on:
       - backend
+  notes-letsencrypt:
+    image: linuxserver/letsencrypt
+    container_name: notes-letsencrypt
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./config/letsencrypt:/config
+    environment:
+      - EMAIL=${EMAIL_PASSWORD}
+      - URL=notes365.tk
+      - VALIDATION=http
+      - TZ=Europe/Stockholm
