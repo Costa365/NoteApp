@@ -6,6 +6,8 @@ services:
       - ./data:/data/db
     ports:
      - "27017:27017"
+    networks:
+      - app-net
   backend:
     build: ./node-backend/
     environment:
@@ -21,6 +23,8 @@ services:
       - /usr/src/app/node_modules
     depends_on:
       - mongodb
+    networks:
+      - app-net
   frontend:
     container_name: frontend
     build: 
@@ -33,6 +37,8 @@ services:
       - /usr/src/app/node_modules
     depends_on:
       - backend
+    networks:
+      - app-net
   notes-letsencrypt:
     image: linuxserver/letsencrypt
     container_name: notes-letsencrypt
@@ -48,3 +54,12 @@ services:
       - TZ=Europe/Stockholm
     depends_on:
       - frontend
+    networks:
+       - app-net
+       - outside
+networks:
+  outside:
+    external:
+      name: ExternalNetwork
+  app-net:
+    internal: true
