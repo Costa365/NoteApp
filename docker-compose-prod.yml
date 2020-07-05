@@ -7,7 +7,6 @@ services:
     ports:
      - "27017:27017"
   backend:
-    tty: true
     build: ./node-backend/
     environment:
       - NOTES_ENC_KEY=${NOTES_ENC_KEY}
@@ -23,7 +22,7 @@ services:
     depends_on:
       - mongodb
   frontend:
-    tty: true
+    container_name: frontend
     build: 
         context: ./react-frontend/
         dockerfile: Dockerfile-prod
@@ -47,3 +46,5 @@ services:
       - URL=notes365.tk
       - VALIDATION=http
       - TZ=Europe/Stockholm
+    depends_on:
+      - frontend
