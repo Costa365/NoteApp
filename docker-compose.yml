@@ -2,13 +2,14 @@ version: '3'
 services:
   mongodb:
     restart: always
-    image: mongo
+    image: "mongo"
     volumes:
       - ./data:/data/db
     ports:
-      - 27017:27017
+     - "27017:27017"
   backend:
     restart: always
+    tty: true
     build: ./node-backend/
     environment:
       - NOTES_ENC_KEY=${NOTES_ENC_KEY}
@@ -17,7 +18,7 @@ services:
       - EMAIL_PASSWORD=${EMAIL_PASSWORD}
       - NOTES_SECRET=${NOTES_SECRET}
     ports:
-      - 6200:6200
+      - "6200:6200"
     volumes:
       - ./node-backend:/usr/src/app
       - /usr/src/app/node_modules
@@ -25,26 +26,12 @@ services:
       - mongodb
   frontend:
     restart: always
+    tty: true
     build: ./react-frontend/
     ports:
-      - 5000:5000
+      - "3000:3000"
     volumes:
       - ./react-frontend:/usr/src/app
       - /usr/src/app/node_modules
     depends_on:
       - backend
-    container_name: frontend
-  notes-letsencrypt:
-    restart: always
-    image: linuxserver/letsencrypt
-    container_name: notes-letsencrypt
-    ports:
-      - 80:80
-      - 443:443
-    volumes:
-      - ./config/letsencrypt:/config
-    environment:
-      - EMAIL=notesapp001@gmail.com
-      - URL=costa365.hopto.org
-      - VALIDATION=http
-      - TZ=Europe/Stockholm
