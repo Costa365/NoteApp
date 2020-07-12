@@ -63,7 +63,9 @@ export default class Login extends Component {
           />
         <input className="btn btn-primary mb-2 styles-margin styles-button-margin" type="submit" value="Login"/>
         </form>
-        <Link to="/forgot">Forgot password?</Link>
+        <br />
+        <Link to="/forgot">Reset</Link> your password if you've forgotton it.<br />
+        <Link to="/register">Register</Link> if you don't have an account.
       </div>
     );
   }

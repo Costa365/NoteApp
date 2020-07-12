@@ -20,8 +20,8 @@ var mailOptions = {
 
 const sendWelcomeMail = (address, user) => {
   mailOptions.to = address;
-  mailOptions.subject = 'Welcome to Notes App!';
-  mailOptions.text = 'Hey ' + user + ', thanks for registering with Notes App. You can now log in and start creating notes.';
+  mailOptions.subject = 'Welcome to Notes365!';
+  mailOptions.text = 'Hey ' + user + ', thanks for registering with Notes365. You can now log in at https://notes365.tk and start creating notes.';
   transporter.sendMail(mailOptions, function(error, info){
     if (error) {
         console.log(error);
@@ -34,7 +34,7 @@ const sendWelcomeMail = (address, user) => {
 const sendResetMail = (address, token) => {
   mailOptions.to = address;
   mailOptions.subject = 'Password Reset Request';
-  mailOptions.text = 'You can reset using: https://costa365.hopto.org/reset?token=' + token;
+  mailOptions.text = 'You can reset using: https://notes365.tk/reset?token=' + token;
   
   transporter.sendMail(mailOptions, function(error, info){
     if (error) {

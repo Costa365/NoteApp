@@ -45,9 +45,9 @@ export default class App extends Component {
           <div>
             <Header user={this.userState.userName()}/>
             <Switch>
-              <Route exact path='/' component={WithAuth(ListNotes)} />
-              <Route path='/add' component={WithAuth(AddNote)} />
-              <Route path='/update/:id' component={WithAuth(UpdateNote)} />
+              <Route exact path='/' component={WithAuth(ListNotes,{ "user": this.userState.userName() } )}  />
+              <Route path='/add' component={WithAuth(AddNote, {})} />
+              <Route path='/update/:id' component={WithAuth(UpdateNote, {})} />
               <Route component={NoMatch} />
             </Switch>
           </div>

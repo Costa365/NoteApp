@@ -10,18 +10,12 @@ export default class Header extends Component {
     
     if(this.props.user != null){
       this.LogoutComp = <Logout />;
-      this.UserName = <span className="styles-margin styles-username-text">{this.props.user}</span>
     }
     else {
       this.AccessComp = 
         <div>
-        
         <Link to="/login">
         <button className="btn btn-primary mb-2 styles-margin styles-button-margin styles-header-button">Login</button>
-        </Link>
-      
-        <Link to="/register">
-        <button className="btn btn-primary mb-2 styles-margin styles-button-margin styles-header-button">Register</button>
         </Link>
         </div>
     }
@@ -35,11 +29,9 @@ export default class Header extends Component {
         <a className="navbar-brand" href="/#" title="Notes"> 
         <img className="styles-logo-img" src="./logo.png" alt=""/> 
         </a>
-        <span className="navbar-text pull-right">{this.UserName}
-          <span>  
+        <span className="navbar-text pull-right">
             {this.LogoutComp}
             {this.AccessComp}
-          </span>
         </span>
         </div>
       </nav>
