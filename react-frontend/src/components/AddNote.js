@@ -42,7 +42,7 @@ export default class AddNote extends Component {
               <textarea name="text" cols="40" rows="5" type="text" value={this.state.value} onChange={this.handleChange} className="form-control"></textarea>
             </div>
             <div className="panel-footer">
-            <button type="submit" className="btn btn-primary styles-margin">Add</button>
+            <button type="submit" className="btn btn-primary styles-margin">Save</button>
             <button type="button" className="btn btn-default styles-margin" onClick={this.handleCancel}>Cancel</button>
             </div>
           </div>

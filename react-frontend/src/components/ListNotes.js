@@ -13,6 +13,8 @@ export default class ListNotes extends Component {
       this.onDelete = this.onDelete.bind(this);
       this.onUpdate = this.onUpdate.bind(this);
       this.handleAdd = this.handleAdd.bind(this);
+      
+      this.props = props;
     }
 
     componentDidMount(){
@@ -66,7 +68,7 @@ export default class ListNotes extends Component {
     render() {
       return (
         <div className="panel panel-default">
-          <div className="panel-heading">Notes</div>
+          <div className="panel-heading"><b>{this.props.user}</b></div>
           <div className="panel-body">
             <table id="note-list" className="table table-bordered">
               <tbody>

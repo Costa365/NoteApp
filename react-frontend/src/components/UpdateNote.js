@@ -60,7 +60,7 @@ export default class UpdateNote extends Component {
                 <textarea cols="40" rows="6" type="text" value={this.state.desc} onChange={this.handleChange} className="form-control"></textarea>
           </div>
           <div className="panel-footer">
-          <button type="submit" className="btn btn-primary styles-margin">Update</button>
+          <button type="submit" className="btn btn-primary styles-margin">Save</button>
           <button type="button" className="btn btn-default styles-margin" onClick={this.handleCancel}>Cancel</button>
           </div>
         </div>
