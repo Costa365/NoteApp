@@ -7,10 +7,13 @@ export default class Intro extends Component {
   render() {
     return (
       <div>
-        Create notes online and access them from your browser. <Link to="/register">Register</Link> now and start creating notes! 
+        
         <div>
-          <img className="styles-tech-img" src="./mern.jpg" alt=""/> 
+          <img className="styles-banner-img" src="./coffee-notes.jpg" alt=""/> 
         </div> 
+        <div className="styles-intro-txt-div">
+          Create and manage notes securely from your web browser. <Link to="/register">Register</Link> now and start creating notes! 
+        </div>
       </div>
     );
   }
