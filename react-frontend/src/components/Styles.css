@@ -40,8 +40,11 @@
   vertical-align: middle;
 }
 
-.styles-tech-img {
-  width: 100vw;
-  max-width: 500px;
-  margin-left: -10px;
+.styles-intro-txt-div {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.styles-banner-img {
+  width: 100%;
 }

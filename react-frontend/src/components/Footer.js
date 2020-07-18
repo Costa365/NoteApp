@@ -15,7 +15,8 @@ export default class Header extends Component {
         <a href="https://expressjs.com/"> Express</a> | 
         <a href="https://reactjs.org/"> React</a> | 
         <a href="https://www.mongodb.com/"> MongoDB</a> | 
-        <a href="https://sweetalert2.github.io/"> Sweet Alert 2</a>
+        <a href="https://sweetalert2.github.io/"> Sweet Alert 2</a> |
+        <a href="https://pixabay.com/photos/coffee-pen-notebook-caffeine-cup-2306471/"> Pixabay</a>
         </div>
         </footer>
     );
