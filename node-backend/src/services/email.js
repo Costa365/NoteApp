@@ -34,7 +34,6 @@ const sendWelcomeMail = (address, user) => {
 const sendResetMail = (address, token) => {
   mailOptions.to = address;
   mailOptions.subject = 'Password Reset Request';
-  mailOptions.text = 'You can reset using: https://notes365.tk/reset?token=' + token;
   mailOptions.html = '<img src="https://notes365.tk/logo.png" alt="Notes365 Logo"><hr /><p>Hey, you can reset your password using <a href="https://notes365.tk/reset?token=' + token + '">this link</a>.</p><hr />';
 
   transporter.sendMail(mailOptions, function(error, info){

@@ -27,6 +27,7 @@ services:
       - mongodb
     networks:
       - app-net
+      - outside
   frontend:
     container_name: frontend
     build: 
