@@ -83,7 +83,7 @@ export default class Reset extends Component {
           onChange={this.handleInputChange}
           required
         />
-       <input className="btn btn-primary mb-2 styles-margin" type="submit" value="Set Password"/>
+       <input className="btn btn-primary mb-2 styles-margin" type="submit" value="Reset Password"/>
       </form>
     );
   }
