@@ -2,6 +2,8 @@
 
 Simple notes application created using Mongodb, Express, ReactJS, NodeJS.
 
+App can be used at [Notes365](https://notes365.tk/).
+
 ### Run
 
 Docker and Docker-compose should be installed on the system. Create NOTES_ENC_KEY, NOTES_SIG_KEY, EMAIL_USER and EMAIL_PASSWORD environment variables as described in Backend section below.
@@ -10,7 +12,7 @@ Docker and Docker-compose should be installed on the system. Create NOTES_ENC_KE
 docker-compose up
 ```
 
-Application can now be access on http://localhost:3000
+Application can now be accessed at http://localhost:3000
 
 ### Development
 
