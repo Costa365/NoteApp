@@ -14,8 +14,10 @@ router.route('/checkToken').get(withAuth, function (req, res) {
 
 // Register a user
 router.route('/register').post(function (req, res) {
-  const { username, email, password } = req.body; 
-  const user = new User({ username:username, email:email, password:password });
+  const { username, email, password } = req.body;
+  const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  const user = new User({ username:username, email:email, 
+    password:password, ip:ip, admin:false, date:Date.now() });
   
   user.save(function(err) {
     if (err) {

@@ -34,6 +34,7 @@ export default class App extends Component {
                   <Route path='/login' component={Login} />
                   <Route path='/reset' component={Reset} />
                   <Route path='/forgot' component={Forgot} />
+                  <Route component={NoMatch} />
                 </Switch>
               </div>
           </div>
