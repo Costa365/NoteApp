@@ -81,6 +81,7 @@ mongo
 use test
 db.Notes.find();
 db.Notes.remove({});
+db.User.update({ username: "costa" },{$set: {admin: true}})
 ```
 
 ### References
