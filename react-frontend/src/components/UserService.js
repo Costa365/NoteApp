@@ -14,7 +14,7 @@ export default class UserService {
 
   isAuth(callback) {
     let thisRef = this;
-    axios.get(this.host + '/user/checkToken', {withCredentials:true})
+    axios.get(this.host + '/user/checkToken/', {withCredentials:true})
     .then((response) => {
       callback(response.data);
     })
