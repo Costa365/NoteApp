@@ -10,7 +10,7 @@ export default class NoteService {
   }
 
   all(callback) {
-    axios.get(this.host + '/notes', {withCredentials:true})
+    axios.get(this.host + '/notes/', {withCredentials:true})
     .then((response) => {
       callback(response.data);
     })
