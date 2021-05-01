@@ -24,7 +24,7 @@ export default class ListNotes extends Component {
 
       this.adminService.isAdmin((data)=>{
         if(data===true){
-          this.setState({ adminLink: <span> | <a href="/admin">Admin</a></span> });
+          this.setState({ adminLink: <span> | <a href="/admin-info">Admin Info</a></span> });
         }
       })
 
