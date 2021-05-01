@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AdminService from './AdminService';
 import './Styles.css'
 
-export default class Admin extends Component {
+export default class AdminInfo extends Component {
 
   constructor(props) {
       super(props);

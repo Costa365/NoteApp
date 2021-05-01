@@ -13,7 +13,7 @@ import Forgot from './Forgot';
 import Intro from './Intro';
 import UserState from './UserState';
 import NoMatch from './NoMatch';
-import Admin from './Admin';
+import AdminInfo from './AdminInfo';
 import './Styles.css';
 
 
@@ -50,7 +50,7 @@ export default class App extends Component {
               <Route exact path='/' component={WithAuth(ListNotes,{ "user": this.userState.userName() } )}  />
               <Route path='/add' component={WithAuth(AddNote, {})} />
               <Route path='/update/:id' component={WithAuth(UpdateNote, {})} />
-              <Route path='/admin' component={WithAuth(Admin, {})} />
+              <Route path='/admin-info' component={WithAuth(AdminInfo, {})} />
               <Route component={NoMatch} />
             </Switch>
           </div>
