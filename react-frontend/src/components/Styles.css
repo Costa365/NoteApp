@@ -49,3 +49,8 @@
 .styles-banner-img {
   width: 100%;
 }
+
+table, th, tr, td {
+  border: 1px solid black;
+  padding: 2px;
+}

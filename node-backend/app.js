@@ -40,6 +40,7 @@ app.use(cookieParser());
 
 app.use(basePath, notesRoutes);
 app.use('/user', require('./src/routes/userRoutes'));
+app.use('/admin', require('./src/routes/adminRoutes'));
 
 // Execute App
 app.listen(port, () => {

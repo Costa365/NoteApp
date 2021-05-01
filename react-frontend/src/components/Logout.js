@@ -14,14 +14,14 @@ export default class Logout extends Component {
   handleClick() {
     this.userService.logout(res=>{
       if (res === true) {
-        window.location.reload();
+        document.location.href="/";
       } else {
         Swal.fire({
           icon: 'error',
           title: 'Unable to log out',
           text: 'Session may have timedout or service may be inaccessible'
         }).then(() => {
-          window.location.reload();
+          document.location.href="/";
         });
       }
     });
