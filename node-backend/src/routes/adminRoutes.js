@@ -9,6 +9,7 @@ const createUser = function(user) {
   userObj ["username"] = user["username"];
   userObj ["admin"] = user["admin"];
   userObj ["date"] = user["date"];
+  userObj ["email"] = user["email"];
   return userObj;
 }
 

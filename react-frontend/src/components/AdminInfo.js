@@ -24,10 +24,11 @@ export default class AdminInfo extends Component {
 
     renderTableData() {
      return this.state.users.map((user, index) => {
-        const { username, admin, date } = user
+        const { username, admin, date, email } = user
         return (
           <tr key={username}>
             <td>{username}</td>
+            <td>{email}</td>
             <td>{date===undefined ? "" : (date.replace("T"," ").replace("Z"," "))}</td>
             <td>{admin===undefined ? "No" : (admin ? "Yes" : "No")}</td>
           </tr>
@@ -49,6 +50,7 @@ export default class AdminInfo extends Component {
               <tbody>
                 <tr>
                   <th>Username</th>
+                  <th>Email</th>
                   <th>Signup Date</th>
                   <th>Admin</th>
                 </tr>
