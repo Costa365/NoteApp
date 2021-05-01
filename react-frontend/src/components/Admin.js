@@ -9,7 +9,6 @@ export default class Admin extends Component {
       this.state = {users: []};
 
       this.adminService = new AdminService();
-
     }
 
     componentDidMount(){

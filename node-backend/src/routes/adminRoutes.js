@@ -37,4 +37,19 @@ router.route('/users').get(withAuth, function (req, res) {
   });
 });
 
+// Check if Admin
+router.route('/is-admin').get(withAuth, function (req, res) {
+  let isAdmin = false;
+  let query = { username: req.username };
+  User.find(query,function (err, items){
+    if(err){
+      console.log(err);
+    } else {
+      isAdmin = items[0].admin;
+      
+      res.status(200).send(isAdmin);
+    }
+  });
+});
+
 module.exports = router;

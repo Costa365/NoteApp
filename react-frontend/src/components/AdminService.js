@@ -10,12 +10,22 @@ export default class AdminService {
   }
 
   users(callback) {
-    axios.get(this.host + '/admin/users', {withCredentials:true})
+    axios.get(this.host + '/admin/users/', {withCredentials:true})
     .then((response) => {
       callback(response.data);
     })
     .catch(function (error) {
       callback(null);
+    });
+  }
+
+  isAdmin(callback) {
+    axios.get(this.host + '/admin/is-admin/', {withCredentials:true})
+    .then((response) => {
+      callback(response.data);
+    })
+    .catch(function (error) {
+      callback(false);
     });
   }
 }
