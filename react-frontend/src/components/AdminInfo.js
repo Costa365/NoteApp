@@ -45,8 +45,9 @@ export default class AdminInfo extends Component {
 
       return (
         <div>
-           <h3 id='title'>Notes365 Users</h3>
-           <table id='users'>
+          <h3 id='title'>Notes365 Users</h3>
+          <div style={{'overflowX':'auto'}}>
+            <table id='users' >
               <tbody>
                 <tr>
                   <th>Username</th>
@@ -56,7 +57,8 @@ export default class AdminInfo extends Component {
                 </tr>
                 {this.renderTableData()}
               </tbody>
-           </table>
+            </table>
+          </div>
         </div>
       )
     }
