@@ -52,7 +52,7 @@ services:
       - ./config/letsencrypt:/config
     environment:
       - EMAIL=${EMAIL_PASSWORD}
-      - URL=notes365.tk
+      - URL=notes365.gq
       - VALIDATION=http
       - TZ=Europe/Stockholm
     depends_on:
