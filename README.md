@@ -1,8 +1,8 @@
 ## Notes
 
-Simple notes application created using Mongodb, Express, ReactJS, NodeJS.
+Simple notes application created using Mongodb, Express, ReactJS, NodeJS. User can create an account and notes are encrypted. Emails are also sent to confirm registration and to reset password. 
 
-App can be used at [Notes365](https://notes365.tk/).
+App can be used at [Notes365](https://notes365.gq/).
 
 ### Run
 
@@ -13,6 +13,14 @@ docker-compose up
 ```
 
 Application can now be accessed at http://localhost:3000
+
+#### Production
+
+Copy nginx-site-config.txt to config/letsencrypt/nginx/site-confs/default
+
+```console
+docker-compose -f docker-compose-prod.yml up --build
+```
 
 ### Development
 
@@ -50,12 +58,16 @@ Create environment variable for secret string used for json seb token
 NOTES_SECRET=xxxxxxxxxx
 ```
 
+To install additional packages, log into docker container and run npm commands.
+
 #### Frontend
 
 ```console
 npm install react-router-dom --save
 npm install axios --save
 ```
+
+To install additional packages, log into docker container and run npm commands.
 
 #### Postman
 
