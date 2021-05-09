@@ -6,7 +6,7 @@ export default class AdminInfo extends Component {
 
   constructor(props) {
       super(props);
-      this.state = {users: []};
+      this.state = {users: [], loading: true};
 
       this.adminService = new AdminService();
     }
@@ -17,8 +17,8 @@ export default class AdminInfo extends Component {
 
     fillData() {
       var thisRef = this;
-      this.adminService.users((data)=>{
-        thisRef.setState({ users: data });
+      this.adminService.users((data)=>{ 
+        thisRef.setState({ users: data, loading:false });
       })
     }
 
@@ -43,21 +43,30 @@ export default class AdminInfo extends Component {
         )
       }
 
+      let content;
+      if(this.state.loading){
+        content = <div><img src="./spinner.gif" />&nbsp;Loading...</div>;
+      }
+      else {
+        content = 
+          <table id='users' >
+            <tbody>
+              <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Signup Date</th>
+                <th>Admin</th>
+              </tr>
+              {this.renderTableData()}
+            </tbody>
+          </table>;
+      }
+
       return (
         <div>
           <h3 id='title'>Notes365 Users</h3>
           <div style={{'overflowX':'auto'}}>
-            <table id='users' >
-              <tbody>
-                <tr>
-                  <th>Username</th>
-                  <th>Email</th>
-                  <th>Signup Date</th>
-                  <th>Admin</th>
-                </tr>
-                {this.renderTableData()}
-              </tbody>
-            </table>
+            {content}
           </div>
         </div>
       )
