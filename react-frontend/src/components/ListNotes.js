@@ -7,8 +7,9 @@ import AdminService from './AdminService';
 export default class ListNotes extends Component {
 
   constructor(props) {
+      console.log("List Notes Constructor");
       super(props);
-      this.state = {items: '', adminLink: ''};
+      this.state = {items: '', adminLink: '', loading: true};
       this.noteService = new NoteService();
       this.adminService = new AdminService();
 
@@ -20,6 +21,7 @@ export default class ListNotes extends Component {
     }
 
     componentDidMount(){
+      console.log("List Notes componentDidMount");
       this.fillData();
 
       this.adminService.isAdmin((data)=>{
@@ -27,13 +29,13 @@ export default class ListNotes extends Component {
           this.setState({ adminLink: <span> | <a href="/admin-info">Admin Info</a></span> });
         }
       })
-
     }
 
     fillData() {
       let thisRef = this;
       this.noteService.all((data)=>{
           thisRef.setState({ items: data });
+          thisRef.setState({loading: false})
       })
     }
 
@@ -75,15 +77,25 @@ export default class ListNotes extends Component {
     }
 
     render() {
+      console.log("List Notes render");
+      let content;
+      if(this.state.loading){
+        content = <div><img src="./spinner.gif" />&nbsp;Loading...</div> ;
+      }
+      else {
+        content = 
+          <table id="note-list" className="table table-bordered">
+            <tbody>
+              {this.tabRow()}
+            </tbody>
+          </table>;
+      }
+
       return (
         <div className="panel panel-default">
           <div className="panel-heading"><b>{this.props.user} {this.state.adminLink}</b></div>
           <div className="panel-body">
-            <table id="note-list" className="table table-bordered">
-              <tbody>
-                {this.tabRow()}
-              </tbody>
-            </table>
+            {content}
           </div>
           <div className="panel-footer">
             <button onClick={this.handleAdd} className="btn btn-info">New note</button>
