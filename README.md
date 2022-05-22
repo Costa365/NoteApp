@@ -2,7 +2,7 @@
 
 Simple notes application created using Mongodb, Express, ReactJS, NodeJS. User can create an account and notes are encrypted. Emails are also sent to confirm registration and to reset password. 
 
-App can be used at [Notes365](https://notes365.gq/).
+App can be used at [Notes365](https://notes365.ga/).
 
 ### Run
 
