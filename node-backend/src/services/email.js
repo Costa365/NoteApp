@@ -4,15 +4,20 @@ const emailUser = process.env.EMAIL_USER;
 const emailPassword = process.env.EMAIL_PASSWORD;
 
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'smtp.mail.yahoo.com',
+  port: 465,
+  service:'yahoo',
+  secure: false,
   auth: {
     user: emailUser,
     pass: emailPassword
-  }
+  },
+  debug: false,
+  logger: true
 });
 
 var mailOptions = {
-  from: 'notesapp001@gmail.com',
+  from: emailUser,
   to: 'dummy@dummy.com',
   subject: '',
   html: ''
@@ -21,7 +26,7 @@ var mailOptions = {
 const sendWelcomeMail = (address, user) => {
   mailOptions.to = address;
   mailOptions.subject = 'Welcome to Notes365!';
-  mailOptions.html = '<img src="https://notes365.gq/logo.png" alt="Notes365 Logo"><hr /><p>Hey <b>' + user + '</b>, thanks for registering with Notes365. You can now log in at <a href="https:/gq">Notes365</a> and start creating notes.</p><hr />';
+  mailOptions.html = '<img src="https://notes365.ga/logo.png" alt="Notes365 Logo"><hr /><p>Hey <b>' + user + '</b>, thanks for registering with Notes365. You can now log in at <a href="https://notes365.ga">Notes365</a> and start creating notes.</p><hr />';
   transporter.sendMail(mailOptions, function(error, info){
     if (error) {
         console.log(error);
@@ -34,7 +39,7 @@ const sendWelcomeMail = (address, user) => {
 const sendResetMail = (address, token) => {
   mailOptions.to = address;
   mailOptions.subject = 'Password Reset Request';
-  mailOptions.html = '<img src="https://notes365.gq/logo.png" alt="Notes365 Logo"><hr /><p>Hey, you can reset your password using <a href="https://notes365.gq/reset?token=' + token + '">this link</a>.</p><hr />';
+  mailOptions.html = '<img src="https://notes365.ga/logo.png" alt="Notes365 Logo"><hr /><p>Hey, you can reset your password using <a href="https://notes365.ga/reset?token=' + token + '">this link</a>.</p><hr />';
 
   transporter.sendMail(mailOptions, function(error, info){
     if (error) {

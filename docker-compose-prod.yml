@@ -1,6 +1,7 @@
 version: '3'
 services:
   mongodb:
+    restart: always
     image: "mongo"
     volumes:
       - ./data:/data/db
@@ -9,15 +10,18 @@ services:
     networks:
       - app-net
   backend:
+    restart: always
+    tty: true
     build: 
       context: ./node-backend/
       dockerfile: Dockerfile-prod
     environment:
-      - NOTES_ENC_KEY=${NOTES_ENC_KEY}
-      - NOTES_SIG_KEY=${NOTES_SIG_KEY}
-      - EMAIL_USER=${EMAIL_USER}
-      - EMAIL_PASSWORD=${EMAIL_PASSWORD}
-      - NOTES_SECRET=${NOTES_SECRET}
+      NOTES_ENC_KEY: ${NOTES_ENC_KEY}
+      NOTES_SIG_KEY: ${NOTES_SIG_KEY}
+      EMAIL_USER: ${EMAIL_USER}
+      EMAIL_PASSWORD: ${EMAIL_PASSWORD}
+      NOTES_SECRET: ${NOTES_SECRET}
+      VIRTUAL_HOST: api.notes365.ga
     ports:
       - "6200:6200"
     volumes:
@@ -27,42 +31,30 @@ services:
       - mongodb
     networks:
       - app-net
-      - outside
+      - default
   frontend:
     container_name: frontend
+    restart: always
+    tty: true
     build: 
       context: ./react-frontend/
       dockerfile: Dockerfile-prod
     ports:
-      - "5000:5000"
+      - "5010:5010"
     volumes:
       - ./react-frontend:/usr/src/app
       - /usr/src/app/node_modules
     depends_on:
       - backend
-    networks:
-      - app-net
-  notes-letsencrypt:
-    image: linuxserver/letsencrypt
-    container_name: notes-letsencrypt
-    ports:
-      - 80:80
-      - 443:443
-    volumes:
-      - ./config/letsencrypt:/config
     environment:
-      - EMAIL=${EMAIL_PASSWORD}
-      - URL=notes365.gq
-      - VALIDATION=http
-      - TZ=Europe/Stockholm
-    depends_on:
-      - frontend
+      VIRTUAL_HOST: notes365.ga
+      PORT: 5010 
     networks:
       - app-net
-      - outside
+      - default
 networks:
-  outside:
+  default:
     external:
-      name: ExternalNetwork
+      name: nginx-proxy
   app-net:
     internal: true

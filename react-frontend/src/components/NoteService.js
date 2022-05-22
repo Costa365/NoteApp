@@ -7,6 +7,9 @@ export default class NoteService {
     if(process.env.NODE_ENV === 'development'){
       this.host = this.host + ':6200';
     }
+    else{
+      this.host = window.location.protocol + "//api." + window.location.hostname;
+    }
   }
 
   all(callback) {
