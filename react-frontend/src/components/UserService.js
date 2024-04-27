@@ -11,7 +11,7 @@ export default class UserService {
       this.host = this.host + ':6200';
     }
     else{
-      this.host = window.location.protocol + "//api." + window.location.hostname;
+      this.host = window.location.protocol + "//api-" + window.location.hostname;
     }
   }
 
