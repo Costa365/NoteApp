@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Swal from 'sweetalert2';
 import UserService from './UserService';
 import './Styles.css';
-import queryString from 'query-string';
+import { useSearchParams } from 'react-router-dom';
 
 export default class Reset extends Component {
   constructor(props) {
@@ -17,9 +17,9 @@ export default class Reset extends Component {
   }
 
   componentDidMount(){
-    let params = queryString.parse(this.props.location.search);
+    const params = new URLSearchParams(this.props.location.search);
     this.setState({
-      'token': params.token
+      'token': params.get('token')
     });
   }
 

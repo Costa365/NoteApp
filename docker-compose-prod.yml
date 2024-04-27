@@ -1,27 +1,28 @@
 version: '3'
 services:
   mongodb:
-    restart: always
-    image: "mongo"
+    restart: unless-stopped
+    image: "mongo:4.4.6"
     volumes:
       - ./data:/data/db
     ports:
      - "27017:27017"
     networks:
       - app-net
+
   backend:
-    restart: always
+    restart: unless-stopped
     tty: true
-    build: 
+    build:
       context: ./node-backend/
       dockerfile: Dockerfile-prod
     environment:
-      NOTES_ENC_KEY: ${NOTES_ENC_KEY}
-      NOTES_SIG_KEY: ${NOTES_SIG_KEY}
-      EMAIL_USER: ${EMAIL_USER}
-      EMAIL_PASSWORD: ${EMAIL_PASSWORD}
-      NOTES_SECRET: ${NOTES_SECRET}
-      VIRTUAL_HOST: api.notes365.ga
+      NOTES_ENC_KEY: bIU1xFgMmlGqKHlKmnHBf8/mhYLlqkBnKNm3Kz8Grn8=
+      NOTES_SIG_KEY: ZSoQ+D9j1QwmOPZAEIGRU5cFjpyfm+XZEM3WbNBRZ0JKFdRQcYwGaj4993a+KME5uiNIngs8vLdRtFEGgcGaDQ==
+      EMAIL_USER: notesapp@yahoo.com
+      EMAIL_PASSWORD: knauulxreaayjpol
+      NOTES_SECRET: ffjJhsFts73g!w3$$ds
+      VIRTUAL_HOST: api-notes365.costa365.site
     ports:
       - "6200:6200"
     volumes:
@@ -34,9 +35,9 @@ services:
       - default
   frontend:
     container_name: frontend
-    restart: always
+    restart: unless-stopped
     tty: true
-    build: 
+    build:
       context: ./react-frontend/
       dockerfile: Dockerfile-prod
     ports:
@@ -47,14 +48,14 @@ services:
     depends_on:
       - backend
     environment:
-      VIRTUAL_HOST: notes365.ga
-      PORT: 5010 
+      VIRTUAL_HOST: notes365.costa365.site
+      PORT: 5010
     networks:
       - app-net
       - default
 networks:
   default:
-    external:
-      name: nginx-proxy
+    name: nginx-proxy
+    external: true
   app-net:
     internal: true
