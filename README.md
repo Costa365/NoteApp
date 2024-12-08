@@ -2,7 +2,7 @@
 
 Simple notes application created using Mongodb, Express, ReactJS, NodeJS. User can create an account and notes are encrypted. Emails are also sent to confirm registration and to reset password. 
 
-App can be used at [Notes365](https://notes365.ga/).
+App can be used at [Notes365](https://notes365.costa365.site).
 
 ### Run
 
@@ -14,13 +14,6 @@ docker-compose up
 
 Application can now be accessed at http://localhost:3000
 
-#### Production
-
-Copy nginx-site-config.txt to config/letsencrypt/nginx/site-confs/default
-
-```console
-docker-compose -f docker-compose-prod.yml up --build
-```
 
 ### Development
 
@@ -89,7 +82,7 @@ POST http://localhost:6200/notes/add
 docker exec -it <container-id> /bin/bash
 ```
 ```console
-mongo
+mongosh
 use test
 db.Notes.find();
 db.Notes.remove({});

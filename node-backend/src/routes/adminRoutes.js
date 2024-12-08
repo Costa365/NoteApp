@@ -17,24 +17,29 @@ const createUser = function(user) {
 router.route('/users').get(withAuth, function (req, res) {
   let isAdmin = false;
   let query = { username: req.username };
-  User.find(query,function (err, items){
-    if(err){
-      console.log(err);
-    } else {
-      if(items[0].admin == true){
-        isAdmin = true;
-        User.find({},function (err, items){
-          users = [];
-          items.forEach(function (item, index) {
-            users.push(createUser(item));
-          });
-          res.status(200).send(users);
+
+  User.find(query)
+  .then(function (items) {
+    if(items[0].admin == true){
+      isAdmin = true;
+      User.find({})
+      .then(function (items) {
+        users = [];
+        items.forEach(function (item, index) {
+          users.push(createUser(item));
         });
-      }
-      else{
-        res.status(403).send([]);
-      }
+        res.status(200).send(users);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
     }
+    else{
+      res.status(403).send([]);
+    }
+  })
+  .catch(function (err) {
+    console.log(err);
   });
 });
 
@@ -42,14 +47,14 @@ router.route('/users').get(withAuth, function (req, res) {
 router.route('/is-admin').get(withAuth, function (req, res) {
   let isAdmin = false;
   let query = { username: req.username };
-  User.find(query,function (err, items){
-    if(err){
-      console.log(err);
-    } else {
-      isAdmin = items[0].admin;
-      
-      res.status(200).send(isAdmin);
-    }
+
+  User.find(query)
+  .then(function (items) {
+    isAdmin = items[0].admin;
+    res.status(200).send(isAdmin);
+  })
+  .catch(function (err) {
+    console.log(err);
   });
 });
 

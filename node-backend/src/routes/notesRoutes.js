@@ -9,21 +9,27 @@ var Notes = require('../models/notes');
 // Get Specific
 router.route('/:id').get(withAuth, function (req, res) {
   var id = req.params.id;
-  Notes.findById(id, function (err, item){
-      res.json(item);
+  Notes.findById(id)
+  .then(function (item) {
+    res.json(item);
+  })
+  .catch(function (err) {
+    console.log(err);
   });
 });
 
 // Get All Items
 router.route('/').get(withAuth, function (req, res) {
   var query = { user: req.username };
-  Notes.find(query,function (err, items){
-    if(err){
-      console.log(err);
-    } else {
-      res.json(items);
-    }
+
+  Notes.find(query)
+  .then(function (items) {
+    res.json(items);
+  })
+  .catch(function (err) {
+    console.log(err);
   });
+
 });
 
 // Add item
@@ -41,7 +47,10 @@ router.route('/add').post(withAuth, function (req, res) {
 
 //  Update Specific
 router.route('/update/:id').post(withAuth, function (req, res) {
-  Notes.findById(req.params.id, function(err, item) {
+
+
+  Notes.findById(req.params.id)
+  .then(function (item) {
     if (!item)
       return next(new Error('Could not load Document'));
     else {
@@ -54,15 +63,20 @@ router.route('/update/:id').post(withAuth, function (req, res) {
         res.status(400).send("unable to update the database");
       });
     }
+  })
+  .catch(function (err) {
+    console.log(err);
   });
 });
 
 // Delete Specific
 router.route('/delete/:id').get(withAuth, function (req, res) {
-  Notes.findByIdAndRemove({_id: req.params.id},
-      function(err, item){
-      if(err) res.json(err);
-      else res.json('Deleted');
+  Notes.findByIdAndDelete({_id: req.params.id})
+  .then(function (item) {
+    res.json('Deleted');
+  })
+  .catch(function (err) {
+    console.log(err);
   });
 });
 

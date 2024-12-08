@@ -1,4 +1,4 @@
-FROM node:12.2.0-alpine
+FROM node:23.3.0-alpine3.20
 
 RUN npm install -g nodemon
 
