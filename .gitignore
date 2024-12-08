@@ -120,3 +120,5 @@ sketch
 
 data/
 config/
+
+docker-compose-prod.yml
