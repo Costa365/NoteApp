@@ -18,7 +18,7 @@ router.route('/register').post(function (req, res) {
   const user = new User({ username:username, email:email, 
     password:password, admin:false, date:Date.now() });
 
-  user.save(query)
+  user.save()
   .then(function () {
     console.log('Register ' + user.email);
     res.status(200).send("Welcome to the club!");

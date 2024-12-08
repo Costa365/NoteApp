@@ -6,7 +6,7 @@ App can be used at [Notes365](https://notes365.costa365.site).
 
 ### Run
 
-Docker and Docker-compose should be installed on the system. Create NOTES_ENC_KEY, NOTES_SIG_KEY, EMAIL_USER and EMAIL_PASSWORD environment variables as described in Backend section below.
+Docker and Docker-compose should be installed on the system. Create a .env file and required environment variables as described in Backend section below.
 
 ```console
 docker-compose up
@@ -34,22 +34,16 @@ npm install sweetalert2 --save
 npm install nodemailer --save
 ```
 
-Generate pair of keys for encyption and assign to environment variables
+Create \node-backend\.env and add the following environment variables:
 ```console
-NOTES_ENC_KEY = openssl rand -base64 32
-NOTES_SIG_KEY = openssl rand -base64 64
+NOTES_ENC_KEY=<generate encryption key using openssl rand -base64 32>
+NOTES_SIG_KEY=<generate encryption key using openssl rand -base64 64>
+EMAIL_USER=<Email address that notification emails will be sent from>
+EMAIL_PASSWORD=<Email account password>
+NOTES_SECRET=<Secret string used for json web token>
 ```
 
-Create environment variables for gmail account which will be used. Access for less secure apps should be enabled.
-```console
-EMAIL_USER=xxx@gmail.com
-EMAIL_PASSWORD=xxxxxx
-```
-
-Create environment variable for secret string used for json seb token
-```console
-NOTES_SECRET=xxxxxxxxxx
-```
+*I was able to get emails working with a Yahoo email account with support for less secure apps enabled.*
 
 To install additional packages, log into docker container and run npm commands.
 
