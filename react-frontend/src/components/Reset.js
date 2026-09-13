@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Swal from 'sweetalert2';
 import UserService from './UserService';
 import './Styles.css';
-import { useSearchParams } from 'react-router-dom';
 
 export default class Reset extends Component {
   constructor(props) {
